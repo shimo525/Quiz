@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import Parse
+
+var dicArray:[[String:AnyObject]] = []
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let ID = "UwWG4fMmxYIgF28VRpTj8Ra9gCKD1stNGpvCU0Cf"
+        let key = "zz8JpgHARt8KmkYSzQzKlMpUB3feuIrXOZQCCb7M"
+        Parse.setApplicationId(ID, clientKey: key)
+        PFUser.enableAutomaticUser()
+        
+        var defaultACL = PFACL()
+        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        
         return true
     }
 

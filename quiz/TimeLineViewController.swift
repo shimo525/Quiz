@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class TimeLineViewController: UIViewController {
+class TimeLineViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,16 +21,23 @@ class TimeLineViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    var barButtonRight:UIBarButtonItem!
 
     func configure(){
         //parseData
         self.loadData{ (pictures,error) -> () in
+            
         }
+        
+        //barButtonItem
+        barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
     }
     
+    //parse
     func loadData(callback:([PFObject]!,NSError!) -> ()){
-        var query:PFQuery = PFQuery(className:"userName")
-        query.orderByAscending("createdAt")
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.orderByAscending("name")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
             if error != nil{}
             callback(objects as [PFObject] ,error)
