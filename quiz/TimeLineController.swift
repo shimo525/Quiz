@@ -26,12 +26,14 @@ class TableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    var quizArray:[PFObject]!
     var barButtonRight:UIBarButtonItem!
     
     func configure(){
         //parseData
-        self.loadData{ (pictures,error) -> () in
-            
+        self.loadData{ (quizes,error) -> () in
+            self.quizArray = quizes
+            self.tableView.reloadData()
         }
         //title
         self.title = "TimeLine"
@@ -49,7 +51,8 @@ class TableViewController: UITableViewController {
         var query:PFQuery = PFQuery(className:"quiz")
         query.orderByAscending("CreatedAt")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
-            if error != nil{}
+            if error != nil{//エラー処理
+            }
             callback(objects as [PFObject] ,error)
         }
     }
@@ -67,7 +70,11 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
+        var nameText:String? = quizArray[indexPath.row].objectForKey("name") as? String
+        var titleText:String? = quizArray[indexPath.row].objectForKey("title") as? String
+        cell.setText(nameText!, title: titleText!)
+//        cell.set
         return cell
     }
     
