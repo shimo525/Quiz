@@ -61,6 +61,21 @@ class TableViewController: UITableViewController {
         self.performSegueWithIdentifier("addItem", sender: nil)
     }
     
+    func answer(sender:AnyObject){
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "question"{
+            let row = sender as? Int
+            if row != nil{
+                var nameText:String? = quizArray[row!].objectForKey("name") as? String
+                var titleText:String? = quizArray[row!].objectForKey("title") as? String
+//                var cellController = 
+            }
+            
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -76,6 +91,10 @@ class TableViewController: UITableViewController {
         cell.setText(nameText!, title: titleText!)
 //        cell.set
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("question", sender: indexPath.row)
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

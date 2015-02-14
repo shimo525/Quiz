@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="JUa-cF-Cnz"/>
                     <connections>
-                        <segue destination="rKC-g9-KEN" kind="push" identifier="addItem" id="Hwx-ZT-S5V"/>
+                        <segue destination="rKC-g9-KEN" kind="push" identifier="quesiton" id="Hwx-ZT-S5V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
