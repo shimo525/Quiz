@@ -65,12 +65,13 @@ class TableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "question"{
+        if segue.identifier == "Answer"{
             let row = sender as? Int
             if row != nil{
                 var nameText:String? = quizArray[row!].objectForKey("name") as? String
                 var titleText:String? = quizArray[row!].objectForKey("title") as? String
-//                var cellController = 
+                let answerController = segue.destinationViewController as AnswerViewController
+                answerController.number = row!
             }
             
         }

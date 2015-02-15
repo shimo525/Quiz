@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CreateViewController: UIViewController {
+class CreateViewController: UIViewController,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class CreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    var titleText:UITextField!
     var contentText:UITextField!
     var choices:UIPickerView!
     var originalFrame:CGRect!{
@@ -32,15 +33,22 @@ class CreateViewController: UIViewController {
     }
     
     func configure(){
-        //title
+        //titleBar
+        self.title = "Create"
         
+        //titleText
+        titleText = UITextField(frame: CGRectMake(originalFrame.height/1.1, originalFrame.height/2, originalFrame.width/1.7, originalFrame.height/10))
         
-        //contents
-        contentText = UITextField(frame: CGRectMake(0, 0, originalFrame.width/1.2, originalFrame.height/5))
+        //contentText
+        contentText = UITextField(frame: CGRectMake(originalFrame.width/1.4, originalFrame.height/5,originalFrame.width/1.2,originalFrame.height/5))
         contentText.text = ""
         contentText.textAlignment = NSTextAlignment.Center
-        contentText.sizeToFit()
         self.view.addSubview(contentText)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func save(){
