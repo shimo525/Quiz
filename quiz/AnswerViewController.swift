@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AnswerViewController: UIViewController {
 
@@ -14,15 +15,25 @@ class AnswerViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configure()
     }
     
-    //sent number
-    var number:Int!
+    //sent items
+    var nameText:String?
+    var titleText:String?
+    var contentText:String?
+    var options:[String]?
+    
+    func configure(){
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*

@@ -70,8 +70,22 @@ class TableViewController: UITableViewController {
             if row != nil{
                 var nameText:String? = quizArray[row!].objectForKey("name") as? String
                 var titleText:String? = quizArray[row!].objectForKey("title") as? String
+                var contentText:String? = quizArray[row!].objectForKey("content") as? String
+                var options:[String] = []
+                for l in 1...4{
+                    var option:String? = quizArray[row!].objectForKey("option\(l)") as? String
+                    if option == nil{
+                        break
+                    }
+                    else{
+                        options.append(option!)
+                    }
+                }
                 let answerController = segue.destinationViewController as AnswerViewController
-                answerController.number = row!
+                answerController.nameText = nameText
+                answerController.titleText = titleText
+                answerController.contentText = contentText
+                answerController.options = options
             }
             
         }
