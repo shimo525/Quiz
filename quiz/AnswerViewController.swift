@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Parse
 
-class AnswerViewController: UIViewController {
+class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,13 +17,77 @@ class AnswerViewController: UIViewController {
         configure()
     }
     
+    //UI
+    var nameLabel:UILabel!
+    var contentLabel:UILabel!
+    var optionPicker:UIPickerView!
+    
+    //originalFrame
+    var originalFrame:CGRect!{
+        get{
+            return self.view.frame
+        }
+    }
+    
     //sent items
-    var nameText:String?
-    var titleText:String?
-    var contentText:String?
-    var options:[String]?
+    var nameText:String!
+    var titleText:String!
+    var contentText:String!
+    var options:[String]!
     
     func configure(){
+        //UI
+        //title
+        self.title = titleText
+        
+        //nameLabel
+        nameLabel = UILabel()
+        nameLabel.text = nameText
+        nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
+        nameLabel.sizeToFit()
+        self.view.addSubview(nameLabel)
+        
+        //contentLabel
+        contentLabel = UILabel()
+        contentLabel.text = contentText
+        contentLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
+        contentLabel.sizeToFit()
+        self.view.addSubview(contentLabel)
+        
+        //opitonPicker
+        optionPicker.dataSource = self
+        
+        
+    }
+    
+    
+    
+    
+    //pickerViewDelegate
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return options.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        if component == 0{
+            return 100
+        }
+        else{
+            return 20
+        }
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        let item = options[row]
+        return item
+    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let item = options[row]
+        println(item)
         
     }
 

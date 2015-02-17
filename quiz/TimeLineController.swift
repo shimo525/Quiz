@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class TableViewController: UITableViewController {
 
@@ -44,6 +43,8 @@ class TableViewController: UITableViewController {
         
         //barButtonLeft
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+//        var str = quizArray
     }
     
         //parse
