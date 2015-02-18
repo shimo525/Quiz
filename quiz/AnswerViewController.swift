@@ -30,26 +30,24 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     }
     
     //sent items
-    var nameText:String!
-    var titleText:String!
-    var contentText:String!
+    var texts:[String]!
     var options:[String]!
     
     func configure(){
         //UI
         //title
-        self.title = titleText
+        self.title = texts[0]
         
         //nameLabel
         nameLabel = UILabel()
-        nameLabel.text = nameText
+        nameLabel.text = texts[1]
         nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
         nameLabel.sizeToFit()
         self.view.addSubview(nameLabel)
         
         //contentLabel
         contentLabel = UILabel()
-        contentLabel.text = contentText
+        contentLabel.text = texts[2]
         contentLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
         contentLabel.sizeToFit()
         self.view.addSubview(contentLabel)

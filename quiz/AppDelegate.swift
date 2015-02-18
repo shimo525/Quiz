@@ -8,7 +8,7 @@
 
 import UIKit
 
-var dicArray:[[String:AnyObject]] = []
+var quizArray:[PFObject] = []
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

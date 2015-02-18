@@ -24,8 +24,10 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     }
 
     var titleText:UITextField!
-    var contentText:UITextField!
+    var contentText:UITextView!
     var choices:UIPickerView!
+    var rightButton:UIBarButtonItem!
+    
     var originalFrame:CGRect!{
         get {
             return self.view.frame
@@ -34,16 +36,19 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     
     func configure(){
         //titleBar
-        self.title = "Create"
+        self.navigationItem.title = "Create"
         
         //titleText
         titleText = UITextField(frame: CGRectMake(originalFrame.height/1.1, originalFrame.height/2, originalFrame.width/1.7, originalFrame.height/10))
         
         //contentText
-        contentText = UITextField(frame: CGRectMake(originalFrame.width/1.4, originalFrame.height/5,originalFrame.width/1.2,originalFrame.height/5))
-        contentText.text = ""
-        contentText.textAlignment = NSTextAlignment.Center
+        contentText = UITextView(frame: CGRectMake(originalFrame.width/1.4, originalFrame.height/5,originalFrame.width/1.2,originalFrame.height/5))
         self.view.addSubview(contentText)
+        
+        //barButtonRight
+        rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done , target: self, action: "save")
+        self.navigationItem.rightBarButtonItem = rightButton
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

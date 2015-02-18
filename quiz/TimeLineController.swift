@@ -8,31 +8,49 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = false
 
         configure()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    var quizArray:[PFObject]!
+
+    @IBOutlet var headerView:UITableView!
     var barButtonRight:UIBarButtonItem!
     
+    
+    //parse
+    func loadData(callback:([PFObject]!,NSError!) -> ()){
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.orderByAscending("CreatedAt")
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error != nil{//エラー処理
+                println("error")
+            }
+            callback(objects as [PFObject] ,error)
+        }
+    }
+    
     func configure(){
+        //tableView
+        headerView.delegate = self
+        headerView.dataSource = self
+        
         //parseData
         self.loadData{ (quizes,error) -> () in
-            self.quizArray = quizes
-            self.tableView.reloadData()
+            quizArray = quizes
+            println(quizArray)
+            self.headerView.reloadData()
         }
         //title
         self.title = "TimeLine"
@@ -41,25 +59,11 @@ class TableViewController: UITableViewController {
         barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
         self.navigationItem.rightBarButtonItem = barButtonRight
         
-        //barButtonLeft
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
-        
-//        var str = quizArray
     }
     
-        //parse
-    func loadData(callback:([PFObject]!,NSError!) -> ()){
-        var query:PFQuery = PFQuery(className:"quiz")
-        query.orderByAscending("CreatedAt")
-        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
-            if error != nil{//エラー処理
-            }
-            callback(objects as [PFObject] ,error)
-        }
-    }
-    
+
     func add(){
-        self.performSegueWithIdentifier("addItem", sender: nil)
+        self.performSegueWithIdentifier("Create", sender: nil)
     }
     
     func answer(sender:AnyObject){
@@ -69,12 +73,12 @@ class TableViewController: UITableViewController {
         if segue.identifier == "Answer"{
             let row = sender as? Int
             if row != nil{
-                var nameText:String? = quizArray[row!].objectForKey("name") as? String
                 var titleText:String? = quizArray[row!].objectForKey("title") as? String
+                var nameText:String? = quizArray[row!].objectForKey("name") as? String
                 var contentText:String? = quizArray[row!].objectForKey("content") as? String
                 var options:[String] = []
                 for l in 1...4{
-                    var option:String? = quizArray[row!].objectForKey("option\(l)") as? String
+                    var option:String? = quizArray[row!].objectForKey("choice\(l)") as? String
                     if option == nil{
                         break
                     }
@@ -83,48 +87,31 @@ class TableViewController: UITableViewController {
                     }
                 }
                 let answerController = segue.destinationViewController as AnswerViewController
-                answerController.nameText = nameText
-                answerController.titleText = titleText
-                answerController.contentText = contentText
+                answerController.texts = [titleText!,nameText!,contentText!]
                 answerController.options = options
             }
             
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dicArray.count
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return quizArray.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
         var nameText:String? = quizArray[indexPath.row].objectForKey("name") as? String
         var titleText:String? = quizArray[indexPath.row].objectForKey("title") as? String
         cell.setText(nameText!, title: titleText!)
-//        cell.set
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("question", sender: indexPath.row)
-    }
-    
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            dicArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("Answer", sender: indexPath.row)
     }
     
     /*
