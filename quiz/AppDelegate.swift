@@ -25,7 +25,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var defaultACL = PFACL()
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
+        //parseData
+        self.loadData{ (quizes,error) -> () in
+            quizArray = quizes
+            println(quizArray)
+        }
         return true
+    }
+    
+    //parse
+    func loadData(callback:([PFObject]!,NSError!) -> ()){
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.orderByAscending("CreatedAt")
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error != nil{//エラー処理
+                println("error")
+            }
+            callback(objects as [PFObject] ,error)
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

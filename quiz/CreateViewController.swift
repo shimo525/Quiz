@@ -40,9 +40,11 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
         
         //titleText
         titleText = UITextField(frame: CGRectMake(originalFrame.height/1.1, originalFrame.height/2, originalFrame.width/1.7, originalFrame.height/10))
+        self.view.addSubview(titleText)
         
         //contentText
         contentText = UITextView(frame: CGRectMake(originalFrame.width/1.4, originalFrame.height/5,originalFrame.width/1.2,originalFrame.height/5))
+        contentText.editable = true
         self.view.addSubview(contentText)
         
         //barButtonRight

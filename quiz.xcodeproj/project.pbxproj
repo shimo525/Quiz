@@ -25,6 +25,8 @@
 		C6728F651A938185008F3287 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F5C1A938184008F3287 /* AudioToolbox.framework */; };
 		C6728F661A938185008F3287 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F5D1A938184008F3287 /* StoreKit.framework */; };
 		C6728F671A938185008F3287 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F5E1A938184008F3287 /* SystemConfiguration.framework */; };
+		C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6783E481A961D4F0072D186 /* TabBarController.swift */; };
+		C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB42331A961BEB0062BE9D /* MyPageController.swift */; };
 		C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */; };
 		C6C63C081A8E30490069A8B4 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */; };
 		C6C63C451A90D3330069A8B4 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */; };
@@ -65,6 +67,8 @@
 		C6728F5C1A938184008F3287 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C6728F5D1A938184008F3287 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C6728F5E1A938184008F3287 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C6783E481A961D4F0072D186 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C6BB42331A961BEB0062BE9D /* MyPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageController.swift; path = ../MyPageController.swift; sourceTree = "<group>"; };
 		C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineController.swift; sourceTree = "<group>"; };
 		C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +129,9 @@
 			isa = PBXGroup;
 			children = (
 				C611916C1A88F5E60056F4E5 /* AppDelegate.swift */,
+				C6783E481A961D4F0072D186 /* TabBarController.swift */,
 				C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */,
+				C6BB42331A961BEB0062BE9D /* MyPageController.swift */,
 				C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */,
 				C639253F1A88FAB00014D6DB /* CreateViewController.swift */,
 				C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */,
@@ -326,9 +332,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */,
 				C6C63C081A8E30490069A8B4 /* TimeLineCell.swift in Sources */,
 				C611916D1A88F5E60056F4E5 /* AppDelegate.swift in Sources */,
 				C6C63C451A90D3330069A8B4 /* AnswerViewController.swift in Sources */,
+				C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */,
 				C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */,
 				C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */,
 			);

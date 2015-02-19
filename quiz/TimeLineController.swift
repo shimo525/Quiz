@@ -19,6 +19,11 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        headerView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -26,45 +31,21 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
     
 
     @IBOutlet var headerView:UITableView!
-    var barButtonRight:UIBarButtonItem!
+
     
-    
-    //parse
-    func loadData(callback:([PFObject]!,NSError!) -> ()){
-        var query:PFQuery = PFQuery(className:"quiz")
-        query.orderByAscending("CreatedAt")
-        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
-            if error != nil{//エラー処理
-                println("error")
-            }
-            callback(objects as [PFObject] ,error)
-        }
-    }
-    
+
     func configure(){
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
         
-        //parseData
-        self.loadData{ (quizes,error) -> () in
-            quizArray = quizes
-            println(quizArray)
-            self.headerView.reloadData()
-        }
         //title
         self.title = "TimeLine"
-        
-        //barButtonItem
-        barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
-        self.navigationItem.rightBarButtonItem = barButtonRight
         
     }
     
 
-    func add(){
-        self.performSegueWithIdentifier("Create", sender: nil)
-    }
+
     
     func answer(sender:AnyObject){
     }

@@ -53,7 +53,7 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         self.view.addSubview(contentLabel)
         
         //opitonPicker
-        optionPicker.dataSource = self
+//        optionPicker.dataSource = self
         
         
     }
