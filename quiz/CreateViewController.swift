@@ -25,7 +25,6 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
 
     var titleText:UITextField!
     var contentText:UITextView!
-    var choices:UIPickerView!
     var rightButton:UIBarButtonItem!
     
     var originalFrame:CGRect!{
@@ -59,7 +58,14 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     }
     
     func save(){
-        var obj:PFObject
+        var obj:PFObject = PFObject(className: "quiz")
+        obj["name"] = ""
+        obj["title"] = titleText.text
+        obj["content"] = contentText.text
+        for l in 1 ... 4{
+//            if 
+        }
+        
     }
     
     /*

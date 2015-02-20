@@ -30,6 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             quizArray = quizes
             println(quizArray)
         }
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        if let name = userDefault.objectForKey("") as? String{
+        }
+        else{
+            
+        }
+        
         return true
     }
     
