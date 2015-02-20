@@ -9,6 +9,7 @@
 import UIKit
 
 var quizArray:[PFObject] = []
+var myName:String!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,15 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //parseData
         self.loadData{ (quizes,error) -> () in
             quizArray = quizes
-            println(quizArray)
+            println("loadedData")
         }
-        var userDefault = NSUserDefaults.standardUserDefaults()
-        if let name = userDefault.objectForKey("") as? String{
-        }
-        else{
-            
-        }
-        
         return true
     }
     

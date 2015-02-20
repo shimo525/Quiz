@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sPb-sW-LuH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="R4j-GH-DnT">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -19,6 +19,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WqU-gW-F1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-782" y="330"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="R5R-TD-2Dj">
+            <objects>
+                <viewController id="R4j-GH-DnT" customClass="LoginViewController" customModule="quiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qa9-7Q-Zfb"/>
+                        <viewControllerLayoutGuide type="bottom" id="dww-CK-5Jh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D9g-rb-SyO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="sPb-sW-LuH" kind="modal" identifier="Login" id="Ecq-93-Wcy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHM-Yb-W4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1206" y="330"/>
         </scene>
         <!--MyPageController-->
         <scene sceneID="t33-Zz-MRW">
@@ -70,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkG-Dq-uA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-390" y="1043"/>
+            <point key="canvasLocation" x="-390" y="1037"/>
         </scene>
         <!--TimeLine-->
         <scene sceneID="9mD-RY-r3A">
@@ -185,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6XW-yf-gVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475" y="1043"/>
+            <point key="canvasLocation" x="91" y="1043"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
