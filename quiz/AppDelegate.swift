@@ -9,7 +9,7 @@
 import UIKit
 
 var quizArray:[PFObject] = []
-var myName:String?
+var myAccount:[String]?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,20 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let key = "zz8JpgHARt8KmkYSzQzKlMpUB3feuIrXOZQCCb7M"
         Parse.setApplicationId(ID, clientKey: key)
         PFUser.enableAutomaticUser()
-        
         var defaultACL = PFACL()
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
-        //parseData
-        self.loadData{ (quizes,error) -> () in
+        //quizData
+        self.loadQuizData{ (quizes,error) -> () in
             quizArray = quizes
             println("loadedData")
         }
+        //accountData
+        
+        
+        
         return true
     }
     
     //parse
-    func loadData(callback:([PFObject]!,NSError!) -> ()){
+    func loadQuizData(callback:([PFObject]!,NSError!) -> ()){
         var query:PFQuery = PFQuery(className:"quiz")
         query.orderByAscending("CreatedAt")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
@@ -43,6 +46,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("error")
             }
             callback(objects as [PFObject] ,error)
+        }
+    }
+    
+    func loadAccountData(){
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        if var accountId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String{
+        var query:PFQuery = PFQuery(className: "Account")
+            query.whereKey("objectID", equalTo:accountId)
+            query.selectKeys(["name","passWord"])
+            
         }
     }
 

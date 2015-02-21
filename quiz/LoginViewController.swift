@@ -30,12 +30,6 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     var userDefault:NSUserDefaults!
     
     func configure(){
-        //myName
-        userDefault = NSUserDefaults.standardUserDefaults()
-        if let name = userDefault.objectForKey("rfc1034.quiz.myName") as? String{
-            myName = name
-        }
-        
         //labels
         var helloLabel = UILabel()
         helloLabel.text = "Welcome To Questioning!!"
@@ -45,7 +39,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
         self.view.addSubview(helloLabel)
         
         var orderLabel = UILabel()
-        if myName == nil{
+        if myAccount == nil{
             orderLabel.text = "Please Sign Up!!"
         }
         else{
@@ -85,7 +79,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
         //signButton
         signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         signButton.frame = CGRectMake(originalFrame.width/1.4, originalFrame.height/6, originalFrame.width/5, 40)
-        if myName == nil{
+        if myAccount == nil{
                 signButton.setTitle("SignUp", forState: UIControlState.Normal)
         }
         else{
@@ -99,11 +93,18 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     
     func sign(){
         if (nameText.text != "")&&(passWordText.text != ""){
-            
+            if var account = myAccount{
+                if account[0] == nameText.text{
+                }
+            else{
+                messageLabel.text = "Wrong passWord!!"
+            }
+                
         }
         else{
             messageLabel.text = "Please fill in the blank!!"
             messageLabel.sizeToFit()
+            }
         }
     }
     
@@ -116,8 +117,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     func textFieldShouldClear(textField: UITextField) -> Bool {
         return true
     }
-
-    override func didReceiveMemoryWarning() {
+     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
