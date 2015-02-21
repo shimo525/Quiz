@@ -9,7 +9,7 @@
 import UIKit
 
 var quizArray:[PFObject] = []
-var myName:String!
+var myName:String?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
