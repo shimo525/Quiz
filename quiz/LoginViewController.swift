@@ -30,47 +30,52 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     var userDefault:NSUserDefaults!
     
     func configure(){
+        //userDefault
+        userDefault = NSUserDefaults.standardUserDefaults()
+        var objectId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String
+        
         //labels
         var helloLabel = UILabel()
         helloLabel.text = "Welcome To Questioning!!"
-        helloLabel.font = UIFont(name: "Zapfino", size: 18)
+        helloLabel.font = UIFont(name: "Zapfino", size: 21)
         helloLabel.sizeToFit()
         helloLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/10)
         self.view.addSubview(helloLabel)
         
         var orderLabel = UILabel()
-        if myAccount == nil{
+        if objectId == nil{
             orderLabel.text = "Please Sign Up!!"
         }
         else{
             orderLabel.text = "Please Sign In!!"
         }
         orderLabel.sizeToFit()
-        orderLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/7)
+        orderLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
         self.view.addSubview(orderLabel)
         
         messageLabel = UILabel()
-        messageLabel.text = ""
-        messageLabel.center = CGPointMake(originalFrame.width, originalFrame.height/1.6)
+        messageLabel.textColor = UIColor.redColor()
+        messageLabel.font = UIFont(name: "System", size: 14)
         
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
         
         //backGroundView
-        var backGroundView = UIView(frame: CGRectMake(originalFrame.width/8, originalFrame.height/4, (originalFrame.width/4) * 3, originalFrame.height/2.2))
-        
+        var backGroundView = UIView(frame: CGRectMake(0, 0, (originalFrame.width/5) * 4, originalFrame.height/3.2))
+        backGroundView.center = CGPointMake(originalFrame.width/2, originalFrame.height/2.5)
         backGroundView.backgroundColor = UIColor(red: 204/255, green: 238/255, blue: 255/255, alpha: 1)
+        backGroundView.layer.cornerRadius = 15
         self.view.addSubview(backGroundView)
         
         //nameTextField
-        nameText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/3, originalFrame.width/1.5, 40))
+        nameText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/3.7, originalFrame.width/1.5, 40))
         nameText.borderStyle = UITextBorderStyle.Bezel
         nameText.backgroundColor = UIColor.whiteColor()
         nameText.delegate = self
         self.view.addSubview(nameText)
         
         //passWordTextField
-        passWordText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/2.3, originalFrame.width/1.5, 40))
+        passWordText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/2.7, originalFrame.width/1.5, 40))
         passWordText.borderStyle = UITextBorderStyle.Bezel
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
@@ -78,13 +83,17 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
         
         //signButton
         signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signButton.frame = CGRectMake(originalFrame.width/1.4, originalFrame.height/6, originalFrame.width/5, 40)
-        if myAccount == nil{
+        signButton.frame = CGRectMake((originalFrame.width/2) - 30, originalFrame.height/2.2, 60, 60)
+        if objectId == nil{
                 signButton.setTitle("SignUp", forState: UIControlState.Normal)
         }
         else{
              signButton.setTitle("SignIn", forState: UIControlState.Normal)
         }
+        signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        signButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        signButton.layer.cornerRadius = 30
+        signButton.backgroundColor = UIColor.whiteColor()
         signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signButton)
         
@@ -93,19 +102,24 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     
     func sign(){
         if (nameText.text != "")&&(passWordText.text != ""){
-            if var account = myAccount{
-                if account[0] == nameText.text{
-                }
-            else{
-                messageLabel.text = "Wrong passWord!!"
-            }
+            if myAccount.isEmpty{
                 
+            }
+            else{
+                if (myAccount[0] == nameText.text)&&(myAccount[1] == passWordText.text){
+                    self.performSegueWithIdentifier("Login", sender: nil)
+                }
+                else{
+                    messageLabel.text = "Wrong passWord!!"
+                }
+            }
         }
         else{
             messageLabel.text = "Please fill in the blank!!"
-            messageLabel.sizeToFit()
-            }
         }
+        messageLabel.sizeToFit()
+        messageLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/1.7)
+        self.view.addSubview(messageLabel)
     }
     
     //textFieldDelegate

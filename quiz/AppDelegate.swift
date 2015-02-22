@@ -9,7 +9,7 @@
 import UIKit
 
 var quizArray:[PFObject] = []
-var myAccount:[String]?
+var myAccount:[String] = []
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,8 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println("loadedData")
         }
         //accountData
-        
-        
+        self.loadAccountData()
         
         return true
     }
@@ -53,8 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var userDefault = NSUserDefaults.standardUserDefaults()
         if var accountId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String{
         var query:PFQuery = PFQuery(className: "Account")
-            query.whereKey("objectID", equalTo:accountId)
+            query.whereKey("objectId", equalTo:accountId)
             query.selectKeys(["name","passWord"])
+            query.findObjectsInBackgroundWithBlock ({(objects:[AnyObject]!, error: NSError!) in
+                if(error != nil){
+                    println("error")
+                }
+                let pfObject = objects[0] as PFObject
+                myAccount = [pfObject["name"] as String, pfObject["passWord"] as String]
+                println("\(myAccount)")
+            })
             
         }
     }
