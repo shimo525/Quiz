@@ -8,6 +8,8 @@
 
 import UIKit
 
+var quizArray:[PFObject] = []
+
 class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
 
     override func viewDidLoad() {
@@ -16,6 +18,13 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         // Uncomment the following line to preserve selection between presentations
 
         configure()
+        
+        //quizData
+        self.loadQuizData{ (quizes,error) -> () in
+            quizArray = quizes
+            println("loadedData")
+            self.headerView.reloadData()
+        }
         
     }
     
@@ -44,8 +53,17 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         
     }
     
-
-
+    //parse
+    func loadQuizData(callback:([PFObject]!,NSError!) -> ()){
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.orderByAscending("CreatedAt")
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error != nil{//エラー処理
+                println("error")
+            }
+            callback(objects as [PFObject] ,error)
+        }
+    }
     
     func answer(sender:AnyObject){
     }

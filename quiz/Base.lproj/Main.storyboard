@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Irb-Mg-q6C">
             <objects>
-                <navigationController id="sPb-sW-LuH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="naviCon" id="sPb-sW-LuH" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KU3-At-dgX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -34,17 +34,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="sPb-sW-LuH" kind="modal" identifier="Login" id="Ecq-93-Wcy"/>
+                        <segue destination="sPb-sW-LuH" kind="modal" identifier="LogIn" id="Ecq-93-Wcy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHM-Yb-W4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1206" y="330"/>
+            <point key="canvasLocation" x="-1208" y="366"/>
         </scene>
         <!--MyPageController-->
         <scene sceneID="t33-Zz-MRW">
             <objects>
-                <viewController id="XLH-hx-Pk3" userLabel="MyPageController" sceneMemberID="viewController">
+                <viewController id="XLH-hx-Pk3" userLabel="MyPageController" customClass="MyPageController" customModule="quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="adi-DL-XfC"/>
                         <viewControllerLayoutGuide type="bottom" id="K07-Pz-O7T"/>
@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0dx-M7-kQY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0dx-M7-kQY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -88,6 +88,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyPage" id="9KZ-9P-xwo"/>
+                    <connections>
+                        <outlet property="myHeaderView" destination="0dx-M7-kQY" id="o2D-qx-qWu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkG-Dq-uA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

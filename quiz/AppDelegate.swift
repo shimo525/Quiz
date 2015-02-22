@@ -8,7 +8,6 @@
 
 import UIKit
 
-var quizArray:[PFObject] = []
 var myAccount:[String] = []
 
 @UIApplicationMain
@@ -25,45 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var defaultACL = PFACL()
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
-        //quizData
-        self.loadQuizData{ (quizes,error) -> () in
-            quizArray = quizes
-            println("loadedData")
-        }
-        //accountData
-        self.loadAccountData()
-        
         return true
-    }
-    
-    //parse
-    func loadQuizData(callback:([PFObject]!,NSError!) -> ()){
-        var query:PFQuery = PFQuery(className:"quiz")
-        query.orderByAscending("CreatedAt")
-        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
-            if error != nil{//エラー処理
-                println("error")
-            }
-            callback(objects as [PFObject] ,error)
-        }
-    }
-    
-    func loadAccountData(){
-        var userDefault = NSUserDefaults.standardUserDefaults()
-        if var accountId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String{
-        var query:PFQuery = PFQuery(className: "Account")
-            query.whereKey("objectId", equalTo:accountId)
-            query.selectKeys(["name","passWord"])
-            query.findObjectsInBackgroundWithBlock ({(objects:[AnyObject]!, error: NSError!) in
-                if(error != nil){
-                    println("error")
-                }
-                let pfObject = objects[0] as PFObject
-                myAccount = [pfObject["name"] as String, pfObject["passWord"] as String]
-                println("\(myAccount)")
-            })
-            
-        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
@@ -17,6 +18,7 @@ class TabBarController: UITabBarController {
         //barButtonItem
         barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
         self.navigationItem.rightBarButtonItem = barButtonRight
+        
     }
     
     var barButtonRight:UIBarButtonItem!

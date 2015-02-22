@@ -8,6 +8,8 @@
 
 import UIKit
 
+var myQuizArray:[PFObject] = []
+
 class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
@@ -18,19 +20,33 @@ class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSou
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         configure()
+        
+        self.loadMyQuizData{ (quizes,error) -> () in
+            myQuizArray = quizes
+            println("\(myQuizArray)")
+            self.myHeaderView.reloadData()
+        }
     }
     
     @IBOutlet var myHeaderView:UITableView!
-    var nameText:String!
     
     func configure(){
-        //nameText
-        var userDefault = NSUserDefaults.standardUserDefaults()
-        nameText = userDefault.objectForKey("") as String
-        
         //barButtonLeft
          self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.whereKey("name", equalTo:PFUser.currentUser().username)
+        query.orderByAscending("CreatedAt")
+        query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
+            if error != nil{//エラー処理
+                println("error")
+            }
+            callback(objects as [PFObject] ,error)
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,32 +70,33 @@ class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as TimeLineCell
-        let contentText:String = quizArray[indexPath.row].objectForKey("content") as String
-        cell.setText(nameText, title: contentText)
+        let titleText = myQuizArray[indexPath.row].objectForKey("title") as? String
+        cell.setText(PFUser.currentUser().username, title: titleText!)
         
         return cell
     }
 
 
-    /*
+    
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
