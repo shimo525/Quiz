@@ -25,6 +25,10 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
 
     var titleText:UITextField!
     var contentText:UITextView!
+    var choicesText1:UITextField!
+    var choicesText2:UITextField!
+    var choicesText3:UITextField!
+    var choicesText4:UITextField!
     var rightButton:UIBarButtonItem!
     
     var originalFrame:CGRect!{
@@ -47,6 +51,9 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
         titleText.borderStyle = UITextBorderStyle.Bezel
         self.view.addSubview(contentText)
         
+        //choicesText
+        choicesText1 = UITextField(frame: CGRectMake(0, 0, 0, 0))
+        
         //barButtonRight
         rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done , target: self, action: "save")
         self.navigationItem.rightBarButtonItem = rightButton
@@ -59,14 +66,20 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     }
     
     func save(){
-        var obj:PFObject = PFObject(className: "quiz")
-        obj["name"] = ""
-        obj["title"] = titleText.text
-        obj["content"] = contentText.text
-        for l in 1 ... 4{
-//            if 
+        var objct:PFObject = PFObject(className: "quiz")
+        objct["name"] = PFUser.currentUser().username
+        objct["title"] = titleText.text
+        objct["content"] = contentText.text
+        var choices:[String] = [choicesText1.text,choicesText2.text,choicesText3.text,choicesText4.text]
+        for l in 1...4{
+            if choices[l] != ""{
+                objct["choice\(l)"] = choices[l]
+            }
+            else{
+                break
+            }
         }
-        
+        objct.save()
     }
     
     /*
