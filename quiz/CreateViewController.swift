@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CreateViewController: UIViewController,UITextFieldDelegate {
+class CreateViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,7 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     var contentText:UITextView!
     var rightButton:UIBarButtonItem!
     var choiceTexts:[UITextField] = []
+    var messagaLabel:UILabel!
     var originalFrame:CGRect!{
         get {
             return self.view.frame
@@ -42,28 +43,36 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
         
         //titleText
         let nav = self.navigationController?.navigationBar.frame.minY
-        titleText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/11, originalFrame.width/1.5, 35))
+        titleText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/9, originalFrame.width/1.5, 35))
         titleText.borderStyle = UITextBorderStyle.Bezel
         titleText.layer.backgroundColor = UIColor.whiteColor().CGColor
-        titleText.delegate = self
+//        titleText.delegate = self
         self.view.addSubview(titleText)
         
         //contentText
-        contentText = UITextView(frame: CGRectMake(0, titleText.frame.maxY, originalFrame.width, originalFrame.height/6))
+        contentText = UITextView(frame: CGRectMake(0, titleText.frame.maxY + 5, originalFrame.width, originalFrame.height/6))
         contentText.layer.backgroundColor = UIColor.whiteColor().CGColor
         self.view.addSubview(contentText)
         
         //choicesText
         for l in 0...3{
             var choiceText = UITextField()
-            choiceText.frame = CGRectMake(originalFrame.width/6, contentText.frame.maxY + 35 * CGFloat(l), originalFrame.width/1.5, 35)
+            choiceText.frame = CGRectMake(originalFrame.width/6, contentText.frame.maxY + 5 + 35 * CGFloat(l), originalFrame.width/1.5, 35)
             choiceText.borderStyle = UITextBorderStyle.Bezel
-            choiceText.delegate = self
+//            choiceText.delegate = self
             choiceText.layer.backgroundColor = UIColor.whiteColor().CGColor
             choiceTexts.append(choiceText)
             self.view.addSubview(choiceText)
         }
-        println("\(titleText.frame.minY)  \(contentText.frame.minY)")
+        
+        //messageLabel
+        messagaLabel = UILabel()
+        messagaLabel.text = "Please create at least two choices!!"
+        messagaLabel.textColor = UIColor.redColor()
+        messagaLabel.font = UIFont(name: "System", size: 14)
+        messagaLabel.sizeToFit()
+        messagaLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
+        self.view.addSubview(messagaLabel)
         
         //barButtonRight
         rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done , target: self, action: "save")
@@ -71,12 +80,8 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
     func save(){
+        if (titleText.text != "")&&(contentText.text != ""){
         var object:PFObject = PFObject(className: "quiz")
         object["name"] = PFUser.currentUser().username
         object["userID"] = PFUser.currentUser().objectId
@@ -91,6 +96,10 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
             }
         }
         object.save()
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }else{
+            var actionSheet:UIActionSheet
+        }
     }
     
     /*
