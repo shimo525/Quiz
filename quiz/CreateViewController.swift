@@ -25,12 +25,8 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
 
     var titleText:UITextField!
     var contentText:UITextView!
-    var choicesText1:UITextField!
-    var choicesText2:UITextField!
-    var choicesText3:UITextField!
-    var choicesText4:UITextField!
     var rightButton:UIBarButtonItem!
-    
+    var choiceTexts:[UITextField] = []
     var originalFrame:CGRect!{
         get {
             return self.view.frame
@@ -38,21 +34,36 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     }
     
     func configure(){
+        //selfview
+        self.view.backgroundColor = UIColor.grayColor()
+        
         //titleBar
         self.navigationItem.title = "Create"
         
         //titleText
-        titleText = UITextField(frame: CGRectMake(originalFrame.width/1.1, originalFrame.height/2, originalFrame.width/1.7, originalFrame.height/10))
+        let nav = self.navigationController?.navigationBar.frame.minY
+        titleText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/11, originalFrame.width/1.5, 35))
         titleText.borderStyle = UITextBorderStyle.Bezel
+        titleText.layer.backgroundColor = UIColor.whiteColor().CGColor
+        titleText.delegate = self
         self.view.addSubview(titleText)
         
         //contentText
-        contentText = UITextView(frame: CGRectMake(originalFrame.width/1.4, originalFrame.height/5,originalFrame.width/1.2,originalFrame.height/5))
-        titleText.borderStyle = UITextBorderStyle.Bezel
+        contentText = UITextView(frame: CGRectMake(0, titleText.frame.maxY, originalFrame.width, originalFrame.height/6))
+        contentText.layer.backgroundColor = UIColor.whiteColor().CGColor
         self.view.addSubview(contentText)
         
         //choicesText
-        choicesText1 = UITextField(frame: CGRectMake(0, 0, 0, 0))
+        for l in 0...3{
+            var choiceText = UITextField()
+            choiceText.frame = CGRectMake(originalFrame.width/6, contentText.frame.maxY + 35 * CGFloat(l), originalFrame.width/1.5, 35)
+            choiceText.borderStyle = UITextBorderStyle.Bezel
+            choiceText.delegate = self
+            choiceText.layer.backgroundColor = UIColor.whiteColor().CGColor
+            choiceTexts.append(choiceText)
+            self.view.addSubview(choiceText)
+        }
+        println("\(titleText.frame.minY)  \(contentText.frame.minY)")
         
         //barButtonRight
         rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done , target: self, action: "save")
@@ -66,20 +77,20 @@ class CreateViewController: UIViewController,UITextFieldDelegate {
     }
     
     func save(){
-        var objct:PFObject = PFObject(className: "quiz")
-        objct["name"] = PFUser.currentUser().username
-        objct["title"] = titleText.text
-        objct["content"] = contentText.text
-        var choices:[String] = [choicesText1.text,choicesText2.text,choicesText3.text,choicesText4.text]
-        for l in 1...4{
-            if choices[l] != ""{
-                objct["choice\(l)"] = choices[l]
+        var object:PFObject = PFObject(className: "quiz")
+        object["name"] = PFUser.currentUser().username
+        object["userID"] = PFUser.currentUser().objectId
+        object["title"] = titleText.text
+        object["content"] = contentText.text
+        for l in 0...3{
+            if choiceTexts[l].text != ""{
+                object["choice\(l)"] = choiceTexts[l].text
             }
             else{
                 break
             }
         }
-        objct.save()
+        object.save()
     }
     
     /*

@@ -29,10 +29,14 @@ class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSou
     }
     
     @IBOutlet var myHeaderView:UITableView!
+    var barButtonLeft:UIBarButtonItem!
     
     func configure(){
-        //barButtonLeft
-         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        barButtonLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
+        self.navigationItem.leftBarButtonItem = barButtonLeft
+    }
+    
+    func refresh(){
     }
     
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){

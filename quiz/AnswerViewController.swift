@@ -53,9 +53,10 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         self.view.addSubview(contentLabel)
         
         //opitonPicker
-//        optionPicker.dataSource = self
-        
-        
+        optionPicker = UIPickerView(frame: CGRectMake(originalFrame.width - 50, originalFrame.height/2, 100, originalFrame.height/10))
+        optionPicker.dataSource = self
+        optionPicker.delegate = self
+        self.view.addSubview(optionPicker)
     }
     
     

@@ -13,7 +13,6 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        println("login")
         // Do any additional setup after loading the view.
     }
     
@@ -21,8 +20,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
             self.performSegueWithIdentifier("LogIn", sender:nil)
-            /*navigation = self.storyboard?.instantiateViewControllerWithIdentifier("naviCon") as UINavigationController
-            self.presentViewController(navigation, animated: true, completion: nil)*/
+//            PFUser.logOut()
         }
     }
     
@@ -36,14 +34,16 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
             return self.view.frame
         }
     }
-    var userDefault:NSUserDefaults!
+    //MBProgressHUD
+    var hud:MBProgressHUD!
+//    var userDefault:NSUserDefaults!
 
     var navigation:UINavigationController!
     
     func configure(){
         //userDefault
-        userDefault = NSUserDefaults.standardUserDefaults()
-        var objectId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String
+        /*userDefault = NSUserDefaults.standardUserDefaults()
+        var objectId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String*/
         
         //labels
         var helloLabel = UILabel()
@@ -115,8 +115,18 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
         
     }
     
+    func progressHud(){
+        //MBProgressHUD
+        self.hud = MBProgressHUD(view: self.view)
+        hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDModeIndeterminate
+        hud.labelText = "Loading"
+        self.view.addSubview(hud)
+    }
+    
     func sign(sender:UIButton){
         if (nameText.text != "")&&(passWordText.text != ""){
+            progressHud()
             var account = PFUser()
             account.username = nameText.text
             account.password = passWordText.text
@@ -128,6 +138,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
                 if sender.tag == 1{
                     if(objects.count > 0){
                         self.messageLabel.text = "This username is already used."
+                        self.hud.hide(true, afterDelay: 0.3)
                     }
                     else{
                         self.signUp(account)
@@ -138,6 +149,11 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
                     }
                     else{
                         self.messageLabel.text = "Wrong password!!"
+                        self.messageLabel.sizeToFit()
+                        self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
+                        
+                        self.hud.hide(true, afterDelay: 0.3)
+                        
                     }
                 }
             }
@@ -161,6 +177,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
                 self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
                 
             }
+            self.hud.hide(true, afterDelay: 0.3)
         }
     }
     
@@ -175,6 +192,7 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
                 self.messageLabel.sizeToFit()
                 self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
             }
+            self.hud.hide(true, afterDelay: 0.3)
         }
     }
     
