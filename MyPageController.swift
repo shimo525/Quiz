@@ -75,7 +75,9 @@ class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSou
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as TimeLineCell
         let titleText = myQuizArray[indexPath.row].objectForKey("title") as? String
-        cell.setText(PFUser.currentUser().username, title: titleText!)
+        var number:Int? = quizArray[indexPath.row].objectForKey("correction") as? Int
+        cell.setText(PFUser.currentUser().username, title: titleText!,num: number!)
+        
         
         return cell
     }

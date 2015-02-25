@@ -98,7 +98,10 @@ class CreateViewController: UIViewController{
         object.save()
             self.navigationController?.popToRootViewControllerAnimated(true)
         }else{
-            var actionSheet:UIActionSheet
+            var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            }))
+            self.presentViewController(alert, animated:true ,completion:nil)
         }
     }
     

@@ -105,7 +105,8 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
         var nameText:String? = quizArray[indexPath.row].objectForKey("name") as? String
         var titleText:String? = quizArray[indexPath.row].objectForKey("title") as? String
-        cell.setText(nameText!, title: titleText!)
+        var number:Int? = quizArray[indexPath.row].objectForKey("correction") as? Int
+        cell.setText(nameText!, title: titleText! ,num: number!)
         return cell
     }
     

@@ -12,6 +12,7 @@ class TimeLineCell: UITableViewCell {
 
     @IBOutlet var nameLabel:UILabel!
     @IBOutlet var titleLabel:UILabel!
+    @IBOutlet var numberLabel:UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,9 +25,10 @@ class TimeLineCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setText(name:String,title:String){
+    func setText(name:String,title:String,num:Int){
         self.nameLabel.text = name
         self.titleLabel.text = title
+        self.numberLabel.text = num.description
     }
 
 }
