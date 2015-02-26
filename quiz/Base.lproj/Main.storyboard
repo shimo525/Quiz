@@ -91,6 +91,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="LTl-E7-aqn" id="MMz-ZL-zGL"/>
+                                            <outlet property="numberLabel" destination="cVN-2W-y4N" id="3lF-di-eKB"/>
                                             <outlet property="titleLabel" destination="guO-Eh-YLI" id="fYz-aG-xMc"/>
                                         </connections>
                                     </tableViewCell>
@@ -158,6 +159,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameLabel" destination="sT7-BN-QTo" id="7jc-AH-NqH"/>
+                                            <outlet property="numberLabel" destination="u5E-6l-zje" id="VTy-q1-8yA"/>
                                             <outlet property="titleLabel" destination="U9x-1l-3hc" id="1Wi-W4-w0b"/>
                                         </connections>
                                     </tableViewCell>

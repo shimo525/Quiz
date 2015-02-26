@@ -15,6 +15,7 @@ class CreateViewController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         configure()
     }
 
@@ -27,7 +28,7 @@ class CreateViewController: UIViewController{
     var contentText:UITextView!
     var rightButton:UIBarButtonItem!
     var choiceTexts:[UITextField] = []
-    var messagaLabel:UILabel!
+    var messageLabel:UILabel!
     var originalFrame:CGRect!{
         get {
             return self.view.frame
@@ -65,14 +66,25 @@ class CreateViewController: UIViewController{
             self.view.addSubview(choiceText)
         }
         
+        
+        //explainLabel
+        var explainLabel = UILabel()
+        explainLabel.text = "First answer will be the right answer of this question!!"
+        explainLabel.textColor = UIColor.whiteColor()
+        explainLabel.font = UIFont(name: "System", size: 9)
+        explainLabel.sizeToFit()
+        explainLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
+        self.view.addSubview(explainLabel)
+        
+        
         //messageLabel
-        messagaLabel = UILabel()
-        messagaLabel.text = "Please create at least two choices!!"
-        messagaLabel.textColor = UIColor.redColor()
-        messagaLabel.font = UIFont(name: "System", size: 14)
-        messagaLabel.sizeToFit()
-        messagaLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
-        self.view.addSubview(messagaLabel)
+        messageLabel = UILabel()
+        messageLabel.text = "Please create at least two choices!!"
+        messageLabel.textColor = UIColor.redColor()
+        messageLabel.font = UIFont(name: "System", size: 14)
+        messageLabel.sizeToFit()
+        messageLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 170)
+        self.view.addSubview(messageLabel)
         
         //barButtonRight
         rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done , target: self, action: "save")

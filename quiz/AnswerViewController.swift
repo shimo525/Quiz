@@ -31,7 +31,8 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     
     //sent items
     var texts:[String]!
-    var options:[String]!
+    var orderOptions:[String]!
+    var options:[String] = []
     
     func configure(){
         //UI
@@ -52,14 +53,28 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         contentLabel.sizeToFit()
         self.view.addSubview(contentLabel)
         
+        //options
+        /*options = sort(orderOptions){() -> Bool in
+            
+            return true
+        }*/
+        options = shuffle(orderOptions)
+        
         //opitonPicker
-        optionPicker = UIPickerView(frame: CGRectMake(originalFrame.width - 50, originalFrame.height/2, 100, originalFrame.height/10))
+        optionPicker = UIPickerView(frame: CGRectMake((originalFrame.width - 100)/2, originalFrame.height/2, 100, originalFrame.height/10))
         optionPicker.dataSource = self
         optionPicker.delegate = self
         self.view.addSubview(optionPicker)
     }
     
-    
+    func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
+        let count = countElements(list)
+        for i in 0..<(count - 1) {
+            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+            swap(&list[i], &list[j])
+        }
+        return list
+    }
     
     
     //pickerViewDelegate

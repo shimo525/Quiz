@@ -29,6 +29,7 @@ class TimeLineCell: UITableViewCell {
         self.nameLabel.text = name
         self.titleLabel.text = title
         self.numberLabel.text = num.description
+        
     }
 
 }

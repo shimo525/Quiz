@@ -76,7 +76,7 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
                 var nameText:String? = quizArray[row!].objectForKey("name") as? String
                 var contentText:String? = quizArray[row!].objectForKey("content") as? String
                 var options:[String] = []
-                for l in 1...4{
+                for l in 0...3{
                     var option:String? = quizArray[row!].objectForKey("choice\(l)") as? String
                     if option == nil{
                         break
@@ -87,7 +87,7 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
                 }
                 let answerController = segue.destinationViewController as AnswerViewController
                 answerController.texts = [titleText!,nameText!,contentText!]
-                answerController.options = options
+                answerController.orderOptions = options
             }
             
         }
