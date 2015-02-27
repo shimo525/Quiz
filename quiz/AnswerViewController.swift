@@ -21,6 +21,7 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     var nameLabel:UILabel!
     var contentLabel:UILabel!
     var optionPicker:UIPickerView!
+    var barButtonRight:UIBarButtonItem!
     
     //originalFrame
     var originalFrame:CGRect!{
@@ -54,10 +55,6 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         self.view.addSubview(contentLabel)
         
         //options
-        /*options = sort(orderOptions){() -> Bool in
-            
-            return true
-        }*/
         options = shuffle(orderOptions)
         
         //opitonPicker
@@ -65,8 +62,14 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         optionPicker.dataSource = self
         optionPicker.delegate = self
         self.view.addSubview(optionPicker)
+        
+        //barButtonRight
+        barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
+        self.navigationItem.rightBarButtonItem = barButtonRight
+        
     }
     
+    //shuffleOptions
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
         let count = countElements(list)
         for i in 0..<(count - 1) {
@@ -74,6 +77,22 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
             swap(&list[i], &list[j])
         }
         return list
+    }
+    
+    //answerQuestion
+    func done(){
+        var alert = UIAlertController(title:"", message:"Will you answer this question?", preferredStyle:UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
+            correctionController.myAnswer = self.options[self.optionPicker.selectedRowInComponent(0)]
+            correctionController.correctAnswer = self.orderOptions[0]
+            correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+            self.presentViewController(correctionController, animated: true, completion:nil)
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in
+        }))
+        self.presentViewController(alert, animated:true ,completion:nil)
     }
     
     

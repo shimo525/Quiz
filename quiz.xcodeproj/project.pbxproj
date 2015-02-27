@@ -26,6 +26,7 @@
 		C6728F661A938185008F3287 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F5D1A938184008F3287 /* StoreKit.framework */; };
 		C6728F671A938185008F3287 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F5E1A938184008F3287 /* SystemConfiguration.framework */; };
 		C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6783E481A961D4F0072D186 /* TabBarController.swift */; };
+		C68E9A651AA0AFB000312F47 /* CorrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */; };
 		C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB42331A961BEB0062BE9D /* MyPageController.swift */; };
 		C6BC41601A9777C8008DECB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BC415F1A9777C8008DECB6 /* LoginViewController.swift */; };
 		C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */; };
@@ -69,6 +70,7 @@
 		C6728F5D1A938184008F3287 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C6728F5E1A938184008F3287 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C6783E481A961D4F0072D186 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CorrectionViewController.swift; path = ../CorrectionViewController.swift; sourceTree = "<group>"; };
 		C6BB42331A961BEB0062BE9D /* MyPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageController.swift; path = ../MyPageController.swift; sourceTree = "<group>"; };
 		C6BC415F1A9777C8008DECB6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */,
 				C639253F1A88FAB00014D6DB /* CreateViewController.swift */,
 				C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */,
+				C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */,
 				C61191701A88F5E60056F4E5 /* Main.storyboard */,
 				C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */,
 				C61191731A88F5E60056F4E5 /* Images.xcassets */,
@@ -343,6 +346,7 @@
 				C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */,
 				C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */,
 				C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */,
+				C68E9A651AA0AFB000312F47 /* CorrectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

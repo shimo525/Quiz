@@ -71,7 +71,7 @@ class CreateViewController: UIViewController{
         var explainLabel = UILabel()
         explainLabel.text = "First answer will be the right answer of this question!!"
         explainLabel.textColor = UIColor.whiteColor()
-        explainLabel.font = UIFont(name: "System", size: 9)
+        explainLabel.font = UIFont(name: "System", size: 5)
         explainLabel.sizeToFit()
         explainLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
         self.view.addSubview(explainLabel)
@@ -81,7 +81,7 @@ class CreateViewController: UIViewController{
         messageLabel = UILabel()
         messageLabel.text = "Please create at least two choices!!"
         messageLabel.textColor = UIColor.redColor()
-        messageLabel.font = UIFont(name: "System", size: 14)
+        messageLabel.font = UIFont(name: "System", size: 12)
         messageLabel.sizeToFit()
         messageLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 170)
         self.view.addSubview(messageLabel)
@@ -93,7 +93,7 @@ class CreateViewController: UIViewController{
     }
     
     func save(){
-        if (titleText.text != "")&&(contentText.text != ""){
+        if (titleText.text != "")&&(contentText.text != "")&&(choiceTexts.count <= 2){
         var object:PFObject = PFObject(className: "quiz")
         object["name"] = PFUser.currentUser().username
         object["userID"] = PFUser.currentUser().objectId
@@ -109,7 +109,14 @@ class CreateViewController: UIViewController{
         }
         object.save()
             self.navigationController?.popToRootViewControllerAnimated(true)
-        }else{
+        }
+        else if (choiceTexts[0] == choiceTexts[1])||(choiceTexts[0] == choiceTexts[2])||(choiceTexts[0] == choiceTexts[3]){
+            var alert = UIAlertController(title:"", message:"Corerct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            }))
+            self.presentViewController(alert, animated:true ,completion:nil)
+        }
+        else{
             var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
             }))
