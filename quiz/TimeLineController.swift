@@ -88,6 +88,7 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
                 let answerController = segue.destinationViewController as AnswerViewController
                 answerController.texts = [titleText!,nameText!,contentText!]
                 answerController.orderOptions = options
+                answerController.index = row
             }
             
         }

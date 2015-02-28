@@ -108,7 +108,7 @@ class CreateViewController: UIViewController{
             }
         }
         object.save()
-            self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popToRootViewControllerAnimated(true)
         }
         else if (choiceTexts[0] == choiceTexts[1])||(choiceTexts[0] == choiceTexts[2])||(choiceTexts[0] == choiceTexts[3]){
             var alert = UIAlertController(title:"", message:"Corerct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)

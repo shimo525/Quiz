@@ -30,10 +30,11 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         }
     }
     
-    //sent items
+    //parameter
     var texts:[String]!
     var orderOptions:[String]!
     var options:[String] = []
+    var index:Int!
     
     func configure(){
         //UI
@@ -86,6 +87,7 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
             var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
             correctionController.myAnswer = self.options[self.optionPicker.selectedRowInComponent(0)]
             correctionController.correctAnswer = self.orderOptions[0]
+            correctionController.index = self.index
             correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
             self.presentViewController(correctionController, animated: true, completion:nil)
             

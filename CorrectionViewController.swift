@@ -20,6 +20,7 @@ class CorrectionViewController: UITabBarController {
     //UI
     var correctionText:UILabel!
     var messageText1:UILabel!
+    var messageText2:UILabel!
     var goButton:UIButton!
     
     //parameter
@@ -30,7 +31,8 @@ class CorrectionViewController: UITabBarController {
     }
     var myAnswer:String!
     var correctAnswer:String!
-
+    var index:Int!
+    
     func configure(){
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
@@ -45,9 +47,57 @@ class CorrectionViewController: UITabBarController {
         
         //messageText1
         messageText1 = UILabel()
-        
-        messageText1.text = ""
+        if myAnswer == correctAnswer{
+            messageText1.text = "Congratulations!!!"
+        }
+        else{
+            messageText1.text = "Oh No!"
+        }
+        messageText1.sizeToFit()
+        messageText1.center = CGPointMake(originalFrame.width/2, 80)
         messageText1.textColor = UIColor.blackColor()
+        self.view.addSubview(messageText1)
+        
+        //messageText1
+        messageText2 = UILabel()
+        if myAnswer == correctAnswer{
+            messageText2.text = "You chose right answer!!"
+        }
+        else{
+            messageText2.text = "You chose wrong answer!"
+        }
+        messageText2.sizeToFit()
+        messageText2.center = CGPointMake(originalFrame.width/2, 100)
+        messageText2.textColor = UIColor.blackColor()
+        
+        //button
+        goButton = UIButton()
+        goButton.setTitle("back", forState: UIControlState.Normal)
+        goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        goButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        goButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
+        goButton.layer.borderColor = UIColor.blackColor().CGColor
+        goButton.sizeToFit()
+        goButton.center = CGPointMake(originalFrame.width/2, 150)
+        self.view.addSubview(goButton)
+        
+        if myAnswer == correctAnswer{
+            correctionNumber()
+        }
+    }
+    
+    func correctionNumber(){
+        var quizObj = quizArray[index]
+        quizObj.incrementKey("correction")
+        var query:PFQuery = PFQuery(className: "quiz")
+    }
+    
+    func goBack(){
+        /*
+        let index = self.navigationController?.viewControllers.count
+        var previousController = self.navigationController?.viewControllers[index! - 1] as UIViewController
+        self.navigationController?.popToViewController(previousController, animated: true)*/
+        self.navigationController?.popToViewController(self.navigationController?.viewControllers[2] as UIViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
