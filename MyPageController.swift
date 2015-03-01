@@ -10,7 +10,7 @@ import UIKit
 
 var myQuizArray:[PFObject] = []
 
-class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +28,37 @@ class MyPageController: UIViewController ,UITableViewDelegate,UITableViewDataSou
         }
     }
     
-    @IBOutlet var myHeaderView:UITableView!
-    var barButtonLeft:UIBarButtonItem!
-    
-    func configure(){
-        barButtonLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "refresh")
-        self.navigationItem.leftBarButtonItem = barButtonLeft
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        tabBarController.refreshDelegate = self
     }
     
     func refresh(){
+        progressHud()
+        self.loadMyQuizData{ (quizes,error) -> () in
+            quizArray = quizes
+            println("loadedMyData")
+            self.hud.hide(true, afterDelay: 0.3)
+            self.myHeaderView.reloadData()
+        }
+    }
+    
+    func progressHud(){
+        //MBProgressHUD
+        self.hud = MBProgressHUD(view: self.view)
+        hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDModeIndeterminate
+        hud.labelText = "Loading"
+        self.view.addSubview(hud)
+    }
+    
+    
+    @IBOutlet var myHeaderView:UITableView!
+    var barButtonLeft:UIBarButtonItem!
+    var hud:MBProgressHUD!
+    
+    func configure(){
     }
     
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){

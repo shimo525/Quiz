@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol RefreshButton{
+    func refresh()
+}
 
 class TabBarController: UITabBarController {
 
@@ -15,13 +18,22 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //barButtonItem
+        //barButtonRight
         barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
         self.navigationItem.rightBarButtonItem = barButtonRight
         
+        //barButtonLeft
+        barButtonLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "reload")
+        self.navigationItem.leftBarButtonItem = barButtonLeft
     }
     
     var barButtonRight:UIBarButtonItem!
+    var barButtonLeft:UIBarButtonItem!
+    var refreshDelegate:RefreshButton!
+    
+    func reload(){
+        refreshDelegate.refresh()
+    }
     
     func add(){
         self.performSegueWithIdentifier("Create", sender: nil)

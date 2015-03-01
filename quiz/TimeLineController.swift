@@ -10,9 +10,9 @@ import UIKit
 
 var quizArray:[PFObject] = []
 
-class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDelegate{
+class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,UITableViewDelegate{
 
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -30,7 +30,8 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        headerView.reloadData()
+        var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        tabBarController.refreshDelegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,8 +41,8 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
     
 
     @IBOutlet var headerView:UITableView!
-
-    
+    var refreshButton:UIBarButtonItem!
+    var hud:MBProgressHUD!
 
     func configure(){
         //tableView
@@ -50,7 +51,6 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         
         //title
         self.title = "TimeLine"
-        
     }
     
     //parse
@@ -65,7 +65,23 @@ class TimeLineController: UIViewController ,UITableViewDataSource,UITableViewDel
         }
     }
     
-    func answer(sender:AnyObject){
+    func refresh(){
+        progressHud()
+        self.loadQuizData{ (quizes,error) -> () in
+            quizArray = quizes
+            println("loadedData")
+            self.hud.hide(true, afterDelay: 0.3)
+            self.headerView.reloadData()
+        }
+    }
+    
+    func progressHud(){
+        //MBProgressHUD
+        self.hud = MBProgressHUD(view: self.view)
+        hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDModeIndeterminate
+        hud.labelText = "Loading"
+        self.view.addSubview(hud)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
