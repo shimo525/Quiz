@@ -39,7 +39,6 @@
         <!--SignUp Controller-->
         <scene sceneID="2CB-fB-MTs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="atn-Rr-i4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Soe-mB-06D" userLabel="SignUp Controller" customClass="SignUpViewController" customModule="quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="89b-EG-uV7"/>
@@ -52,13 +51,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="SignUp" id="azG-Ki-ZEm"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="atn-Rr-i4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1164" y="9"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--First Tab Bar Controller-->
         <scene sceneID="9c7-ux-9Sm">
             <objects>
-                <tabBarController id="73X-Ob-5kX" sceneMemberID="viewController">
+                <tabBarController id="73X-Ob-5kX" customClass="FirstTabBarController" customModule="quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Ft9-UB-wAL"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="KdW-aP-mhX">

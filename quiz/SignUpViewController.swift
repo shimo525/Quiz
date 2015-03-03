@@ -21,6 +21,57 @@ class SignUpViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    func sign(){
+        /*if (nameText.text != "")&&(passWordText.text != ""){
+            progressHud()
+            var account = PFUser()
+            account.username = nameText.text
+            account.password = passWordText.text
+            // Check already registerd user
+            var checkExist = PFUser.query()
+            checkExist.whereKey("username", equalTo: account.username)
+            checkExist.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                    if(objects.count > 0){
+                        self.signIn(account.username, password:account.password)
+                    }
+                    else{
+                        self.messageLabel.text = "Wrong password!!"
+                        self.messageLabel.sizeToFit()
+                        self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
+                        
+                        self.hud.hide(true, afterDelay: 0.3)
+                        
+                    }
+                if(objects.count > 0){
+                    self.messageLabel.text = "This username is already used."
+                    self.hud.hide(true, afterDelay: 0.3)
+                }
+                else{
+                    self.signUp(account)
+                }
+            }
+        }
+        else{
+            messageLabel.text = "Please fill in the blank!!"
+        }
+        messageLabel.sizeToFit()
+        messageLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/1.7)*/
+    }
+        func signUp(tweeter:PFUser) {
+            tweeter.signUpInBackgroundWithBlock{
+                (success:Bool!, error:NSError!)->Void in
+                if error != nil{
+                    println("Sign up succeeded.")
+                    self.performSegueWithIdentifier("LogIn", sender: nil)
+                }else{
+/*                    self.messageLabel.text = "Error occured."
+                    self.messageLabel.sizeToFit()
+                    self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)*/
+                }
+//                self.hud.hide(true, afterDelay: 0.3)
+            }
+        }
 
     /*
     // MARK: - Navigation

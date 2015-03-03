@@ -19,8 +19,8 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-            self.performSegueWithIdentifier("LogIn", sender:nil)
-//            PFUser.logOut()
+//            self.performSegueWithIdentifier("LogIn", sender:nil)
+            PFUser.logOut()
         }
     }
     var nameText:UITextField!
@@ -41,7 +41,12 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     func configure(){
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
-//        self.win
+        
+        //label
+        messageLabel = UILabel()
+        messageLabel.textColor = UIColor.redColor()
+        messageLabel.font = UIFont(name: "System", size: 14)
+        self.view.addSubview(messageLabel)
         
         //backGroundView
         var backGroundView = UIView(frame: CGRectMake(0, 0, (originalFrame.width/5) * 4, originalFrame.height/3.2))
@@ -66,27 +71,14 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         
         //signButtons
         signupButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signupButton.frame = CGRectMake((originalFrame.width/2) - 80, originalFrame.height/2.2, 60, 60)
+        signupButton.frame = CGRectMake((originalFrame.width/2) - 30, originalFrame.height/2.2, 60, 60)
         signupButton.setTitle("signup", forState: UIControlState.Normal)
         signupButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         signupButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         signupButton.layer.cornerRadius = 30
         signupButton.backgroundColor = UIColor.whiteColor()
-        signupButton.tag = 1
-        signupButton.addTarget(self, action: "sign:", forControlEvents: UIControlEvents.TouchUpInside)
+        signupButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signupButton)
-        
-        loginButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        loginButton.frame = CGRectMake((originalFrame.width/2) + 20, originalFrame.height/2.2, 60, 60)
-        loginButton.setTitle("Login", forState: UIControlState.Normal)
-        loginButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        loginButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        loginButton.layer.cornerRadius = 30
-        loginButton.backgroundColor = UIColor.whiteColor()
-        loginButton.tag = 2
-        loginButton.addTarget(self, action: "sign:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(loginButton)
-        
         
     }
     
@@ -99,7 +91,7 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         self.view.addSubview(hud)
     }
     
-    func sign(sender:UIButton){
+    func sign(){
         if (nameText.text != "")&&(passWordText.text != ""){
             progressHud()
             var account = PFUser()
@@ -110,15 +102,6 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
             checkExist.whereKey("username", equalTo: account.username)
             checkExist.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
-                if sender.tag == 1{
-                    if(objects.count > 0){
-                        self.messageLabel.text = "This username is already used."
-                        self.hud.hide(true, afterDelay: 0.3)
-                    }
-                    else{
-                        self.signUp(account)
-                    }
-                }else if sender.tag == 2{
                     if(objects.count > 0){
                         self.signIn(account.username, password:account.password)
                     }
@@ -126,10 +109,7 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
                         self.messageLabel.text = "Wrong password!!"
                         self.messageLabel.sizeToFit()
                         self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
-                        
                         self.hud.hide(true, afterDelay: 0.3)
-                        
-                    }
                 }
             }
         }
@@ -155,21 +135,7 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
             self.hud.hide(true, afterDelay: 0.3)
         }
     }
-    
-    func signUp(tweeter:PFUser) {
-        tweeter.signUpInBackgroundWithBlock{
-            (success:Bool!, error:NSError!)->Void in
-            if error != nil{
-                println("Sign up succeeded.")
-                self.performSegueWithIdentifier("LogIn", sender: nil)
-            }else{
-                self.messageLabel.text = "Error occured."
-                self.messageLabel.sizeToFit()
-                self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
-            }
-            self.hud.hide(true, afterDelay: 0.3)
-        }
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(PFUser.currentUser().username)")

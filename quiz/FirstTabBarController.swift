@@ -12,8 +12,12 @@ class FirstTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.frame = CGRectMake(0, 20, windowSize.width, windowSize.height)
-
+        var tabHeight = self.tabBar.frame.height
+        var naviHeight = self.navigationController?.navigationBar.frame.height
+        var naviY = self.navigationController?.navigationBar.frame.minY
+        self.tabBar.frame = CGRectMake(0, naviHeight! + naviY!, windowSize.width, tabHeight)
+        /*var contentView = self.tabBar.subviews[0] as UIView
+        contentView.frame = CGRectMake(0, tabHeight, windowSize.width, windowSize.height - tabHeight)*/
         // Do any additional setup after loading the view.
     }
     
