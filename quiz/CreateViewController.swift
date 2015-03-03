@@ -93,12 +93,13 @@ class CreateViewController: UIViewController{
     }
     
     func save(){
-        if (titleText.text != "")&&(contentText.text != "")&&(choiceTexts.count <= 2){
+        if (titleText.text != "")&&(contentText.text != "")&&(choiceTexts[0].text != "")&&(choiceTexts[1].text != ""){
         var object:PFObject = PFObject(className: "quiz")
         object["name"] = PFUser.currentUser().username
         object["userID"] = PFUser.currentUser().objectId
         object["title"] = titleText.text
         object["content"] = contentText.text
+        object["correction"] = 0
         for l in 0...3{
             if choiceTexts[l].text != ""{
                 object["choice\(l)"] = choiceTexts[l].text
@@ -109,6 +110,12 @@ class CreateViewController: UIViewController{
         }
         object.save()
         self.navigationController?.popToRootViewControllerAnimated(true)
+        }
+        else if (choiceTexts[0] == "")||(choiceTexts[1] == ""){
+            var alert = UIAlertController(title:"", message:"Corerct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            }))
+            self.presentViewController(alert, animated:true ,completion:nil)
         }
         else if (choiceTexts[0] == choiceTexts[1])||(choiceTexts[0] == choiceTexts[2])||(choiceTexts[0] == choiceTexts[3]){
             var alert = UIAlertController(title:"", message:"Corerct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)

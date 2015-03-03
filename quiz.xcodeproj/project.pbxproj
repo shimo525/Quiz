@@ -13,6 +13,8 @@
 		C61191741A88F5E60056F4E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C61191731A88F5E60056F4E5 /* Images.xcassets */; };
 		C61191771A88F5E60056F4E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C61191751A88F5E60056F4E5 /* LaunchScreen.xib */; };
 		C61191831A88F5E70056F4E5 /* quizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61191821A88F5E70056F4E5 /* quizTests.swift */; };
+		C61426CB1AA5CDF100F70B59 /* FirstTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */; };
+		C61426CD1AA5CE0D00F70B59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */; };
 		C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C639253F1A88FAB00014D6DB /* CreateViewController.swift */; };
 		C6728F431A934F28008F3287 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F421A934F28008F3287 /* libz.1.2.5.dylib */; };
 		C6728F451A934F3C008F3287 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F441A934F3C008F3287 /* libsqlite3.0.dylib */; };
@@ -28,7 +30,7 @@
 		C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6783E481A961D4F0072D186 /* TabBarController.swift */; };
 		C68E9A651AA0AFB000312F47 /* CorrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */; };
 		C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB42331A961BEB0062BE9D /* MyPageController.swift */; };
-		C6BC41601A9777C8008DECB6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BC415F1A9777C8008DECB6 /* LoginViewController.swift */; };
+		C6BC41601A9777C8008DECB6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */; };
 		C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */; };
 		C6C63C081A8E30490069A8B4 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */; };
 		C6C63C451A90D3330069A8B4 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */; };
@@ -56,6 +58,8 @@
 		C611917C1A88F5E60056F4E5 /* quizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = quizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61191811A88F5E60056F4E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C61191821A88F5E70056F4E5 /* quizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizTests.swift; sourceTree = "<group>"; };
+		C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabBarController.swift; sourceTree = "<group>"; };
+		C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C639253F1A88FAB00014D6DB /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "quiz-Bridging-Header.h"; sourceTree = "<group>"; };
 		C6728F421A934F28008F3287 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -72,7 +76,7 @@
 		C6783E481A961D4F0072D186 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CorrectionViewController.swift; path = ../CorrectionViewController.swift; sourceTree = "<group>"; };
 		C6BB42331A961BEB0062BE9D /* MyPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageController.swift; path = ../MyPageController.swift; sourceTree = "<group>"; };
-		C6BC415F1A9777C8008DECB6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineController.swift; sourceTree = "<group>"; };
 		C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				C611916C1A88F5E60056F4E5 /* AppDelegate.swift */,
-				C6BC415F1A9777C8008DECB6 /* LoginViewController.swift */,
+				C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */,
+				C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */,
+				C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */,
 				C6783E481A961D4F0072D186 /* TabBarController.swift */,
 				C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */,
 				C6BB42331A961BEB0062BE9D /* MyPageController.swift */,
@@ -338,11 +344,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61426CD1AA5CE0D00F70B59 /* SignUpViewController.swift in Sources */,
 				C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */,
 				C6C63C081A8E30490069A8B4 /* TimeLineCell.swift in Sources */,
 				C611916D1A88F5E60056F4E5 /* AppDelegate.swift in Sources */,
 				C6C63C451A90D3330069A8B4 /* AnswerViewController.swift in Sources */,
-				C6BC41601A9777C8008DECB6 /* LoginViewController.swift in Sources */,
+				C6BC41601A9777C8008DECB6 /* SignInViewController.swift in Sources */,
+				C61426CB1AA5CDF100F70B59 /* FirstTabBarController.swift in Sources */,
 				C6783E491A961D4F0072D186 /* TabBarController.swift in Sources */,
 				C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */,
 				C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */,

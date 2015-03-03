@@ -31,13 +31,14 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        tabBarController.title = "MyPage"
         tabBarController.refreshDelegate = self
     }
     
     func refresh(){
         progressHud()
         self.loadMyQuizData{ (quizes,error) -> () in
-            quizArray = quizes
+            myQuizArray = quizes
             println("loadedMyData")
             self.hud.hide(true, afterDelay: 0.3)
             self.myHeaderView.reloadData()
@@ -59,6 +60,8 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     var hud:MBProgressHUD!
     
     func configure(){
+        myHeaderView.delegate = self
+        myHeaderView.dataSource = self
     }
     
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){
@@ -73,6 +76,19 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         }
     }
     
+    func DeleteMyQuizData(objectID:String/* ,callback:(PFObject!,NSError!) -> ()*/){
+        var query:PFQuery = PFQuery(className:"quiz")
+        query.whereKey("name", equalTo:PFUser.currentUser().username)
+        query.whereKey("objectID", equalTo:objectID)
+        query.getObjectInBackgroundWithId(objectID, block:{(object:PFObject!,error:NSError!) -> Void in
+            if error != nil{//エラー処理
+                println("error")
+            }
+            object.delete()
+//            callback(object as PFObject ,error)
+        }
+)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -84,38 +100,49 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return myQuizArray.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as TimeLineCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
         let titleText = myQuizArray[indexPath.row].objectForKey("title") as? String
-        var number:Int? = quizArray[indexPath.row].objectForKey("correction") as? Int
+        var number:Int? = myQuizArray[indexPath.row].objectForKey("correction") as? Int
         cell.setText(PFUser.currentUser().username, title: titleText!,num: number!)
-        
         
         return cell
     }
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var alert = UIAlertController(title: "", message: "Delete this question?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            var id = myQuizArray[indexPath.row].objectForKey("objectID") as String
+            myQuizArray.removeAtIndex(indexPath.row)
+            self.myHeaderView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.DeleteMyQuizData(id)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in}))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
     
-    // Override to support conditional editing of the table view.
+    /*// Override to support conditional editing of the table view.
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
+    */
     
 
     
     // Override to support editing the table view.
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    /*func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -123,7 +150,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
-    }
+    }*/
     
 
     /*

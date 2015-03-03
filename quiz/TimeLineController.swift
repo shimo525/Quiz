@@ -31,6 +31,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        tabBarController.title = "TimeLine"
         tabBarController.refreshDelegate = self
     }
     

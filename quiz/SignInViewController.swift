@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UITabBarController,UITextFieldDelegate {
+class SignInViewController: UITabBarController,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
 //            PFUser.logOut()
         }
     }
-    
     var nameText:UITextField!
     var passWordText:UITextField!
     var messageLabel:UILabel!
@@ -36,37 +35,13 @@ class LoginViewController: UITabBarController,UITextFieldDelegate {
     }
     //MBProgressHUD
     var hud:MBProgressHUD!
-//    var userDefault:NSUserDefaults!
 
     var navigation:UINavigationController!
     
     func configure(){
-        //userDefault
-        /*userDefault = NSUserDefaults.standardUserDefaults()
-        var objectId = userDefault.objectForKey("rfc1034.Quiz.myAccountId") as? String*/
-        
-        //labels
-        var helloLabel = UILabel()
-        helloLabel.text = "Welcome To Questioning!!"
-        helloLabel.font = UIFont(name: "Zapfino", size: 21)
-        helloLabel.sizeToFit()
-        helloLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/10)
-        self.view.addSubview(helloLabel)
-        
-        var orderLabel = UILabel()
-        orderLabel.text = "Please Log In!!"
-        orderLabel.sizeToFit()
-        orderLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
-        self.view.addSubview(orderLabel)
-        
-        messageLabel = UILabel()
-        messageLabel.textColor = UIColor.redColor()
-        messageLabel.font = UIFont(name: "System", size: 14)
-        messageLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/1.7)
-        self.view.addSubview(messageLabel)
-        
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
+//        self.win
         
         //backGroundView
         var backGroundView = UIView(frame: CGRectMake(0, 0, (originalFrame.width/5) * 4, originalFrame.height/3.2))

@@ -9,6 +9,7 @@
 import UIKit
 
 var myAccount:[String] = []
+var windowSize:CGRect!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,12 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //Parse
         let ID = "UwWG4fMmxYIgF28VRpTj8Ra9gCKD1stNGpvCU0Cf"
         let key = "zz8JpgHARt8KmkYSzQzKlMpUB3feuIrXOZQCCb7M"
         Parse.setApplicationId(ID, clientKey: key)
         PFUser.enableAutomaticUser()
         var defaultACL = PFACL()
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        
+        //Window
+        windowSize = UIScreen.mainScreen().bounds
         
         return true
     }
