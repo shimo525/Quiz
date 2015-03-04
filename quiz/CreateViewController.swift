@@ -118,7 +118,7 @@ class CreateViewController: UIViewController{
             self.presentViewController(alert, animated:true ,completion:nil)
         }
         else if (choiceTexts[0] == choiceTexts[1])||(choiceTexts[0] == choiceTexts[2])||(choiceTexts[0] == choiceTexts[3]){
-            var alert = UIAlertController(title:"", message:"Corerct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title:"", message:"Correct answer should be only one!!", preferredStyle:UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
             }))
             self.presentViewController(alert, animated:true ,completion:nil)

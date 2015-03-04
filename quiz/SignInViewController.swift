@@ -19,15 +19,17 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-//            self.performSegueWithIdentifier("LogIn", sender:nil)
-            PFUser.logOut()
+            self.performSegueWithIdentifier("LogIn", sender:nil)
+//            PFUser.logOut()
         }
     }
+    //UI
     var nameText:UITextField!
     var passWordText:UITextField!
-    var messageLabel:UILabel!
     var signupButton:UIButton!
-    var loginButton:UIButton!
+    var facebookButton:UIButton!
+    
+    //parameter
     var originalFrame:CGRect!{
         get {
             return self.view.frame
@@ -35,50 +37,61 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     }
     //MBProgressHUD
     var hud:MBProgressHUD!
-
-    var navigation:UINavigationController!
     
     func configure(){
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
         
-        //label
-        messageLabel = UILabel()
-        messageLabel.textColor = UIColor.redColor()
-        messageLabel.font = UIFont(name: "System", size: 14)
-        self.view.addSubview(messageLabel)
-        
         //backGroundView
-        var backGroundView = UIView(frame: CGRectMake(0, 0, (originalFrame.width/5) * 4, originalFrame.height/3.2))
-        backGroundView.center = CGPointMake(originalFrame.width/2, originalFrame.height/2.5)
+        var backGroundView = UIView(frame: CGRectMake(originalFrame.width/10, 142, (originalFrame.width/5) * 4, 207))
         backGroundView.backgroundColor = UIColor(red: 204/255, green: 238/255, blue: 255/255, alpha: 1)
         backGroundView.layer.cornerRadius = 15
         self.view.addSubview(backGroundView)
         
         //nameTextField
-        nameText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/3.7, originalFrame.width/1.5, 40))
+        nameText = UITextField(frame: CGRectMake(originalFrame.width/6, 164, originalFrame.width/1.5, originalFrame.height/13))
         nameText.borderStyle = UITextBorderStyle.Bezel
         nameText.backgroundColor = UIColor.whiteColor()
         nameText.delegate = self
+        nameText.placeholder = "username"
         self.view.addSubview(nameText)
         
         //passWordTextField
-        passWordText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/2.7, originalFrame.width/1.5, 40))
+        passWordText = UITextField(frame: CGRectMake(originalFrame.width/6, 218, originalFrame.width/1.5, originalFrame.height/13))
         passWordText.borderStyle = UITextBorderStyle.Bezel
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
+        passWordText.placeholder = "password"
         self.view.addSubview(passWordText)
         
-        //signButtons
+        //signButton
         signupButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signupButton.frame = CGRectMake((originalFrame.width/2) - 30, originalFrame.height/2.2, 60, 60)
+        signupButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
         signupButton.setTitle("signup", forState: UIControlState.Normal)
         signupButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         signupButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        signupButton.layer.cornerRadius = 30
+        signupButton.layer.cornerRadius = originalFrame.width/12
+        signupButton.layer.borderColor = UIColor.blackColor().CGColor
         signupButton.backgroundColor = UIColor.whiteColor()
         signupButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signupButton)
+        
+        //facebookLabel
+        var facebookLabel = UILabel()
+        facebookLabel.text = "or you can sign up with..."
+        facebookLabel.textColor = UIColor.blackColor()
+        facebookLabel.sizeToFit()
+        facebookLabel.center = CGPointMake(originalFrame.width/2, 382)
+        self.view.addSubview(facebookLabel)
+        
+        //facebookButton
+        facebookButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        facebookButton.frame = CGRectMake(originalFrame.width/6, 405, originalFrame.width/1.5, originalFrame.height/10.4)
+        facebookButton.setTitle("FaceBook", forState: UIControlState.Normal)
+        facebookButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        facebookButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        facebookButton.layer.borderColor = UIColor.blackColor().CGColor
+        self.view.addSubview(facebookButton)
         
     }
     
@@ -106,18 +119,21 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
                         self.signIn(account.username, password:account.password)
                     }
                     else{
-                        self.messageLabel.text = "Wrong password!!"
-                        self.messageLabel.sizeToFit()
-                        self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
+                        var alert = UIAlertController(title:"", message:"Wrong password!!", preferredStyle:UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                        }))
+                        self.presentViewController(alert, animated:true ,completion:nil)
                         self.hud.hide(true, afterDelay: 0.3)
                 }
+
             }
         }
         else{
-            messageLabel.text = "Please fill in the blank!!"
+            var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            }))
+            self.presentViewController(alert, animated:true ,completion:nil)
         }
-        messageLabel.sizeToFit()
-        messageLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/1.7)
     }
     
     
@@ -127,9 +143,10 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
             if user != nil {
                 self.performSegueWithIdentifier("LogIn", sender: nil)
             } else {
-                self.messageLabel.text = "Wrong password!!"
-                self.messageLabel.sizeToFit()
-                self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
+                var alert = UIAlertController(title:"", message:"Wrong password!!", preferredStyle:UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                }))
+                self.presentViewController(alert, animated:true ,completion:nil)
                 
             }
             self.hud.hide(true, afterDelay: 0.3)

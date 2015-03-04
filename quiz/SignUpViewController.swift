@@ -13,12 +13,18 @@ class SignUpViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configure()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func configure(){
+        //selfView
+        self.view.backgroundColor = UIColor.whiteColor()
     }
     
     func sign(){

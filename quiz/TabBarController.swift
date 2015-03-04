@@ -25,6 +25,7 @@ class TabBarController: UITabBarController {
         //barButtonLeft
         barButtonLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "reload")
         self.navigationItem.leftBarButtonItem = barButtonLeft
+        
     }
     
     var barButtonRight:UIBarButtonItem!

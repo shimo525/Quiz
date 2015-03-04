@@ -57,7 +57,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     //parse
     func loadQuizData(callback:([PFObject]!,NSError!) -> ()){
         var query:PFQuery = PFQuery(className:"quiz")
-        query.orderByAscending("CreatedAt")
+        query.orderByDescending("CreatedAt")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
             if error != nil{//エラー処理
                 println("error")

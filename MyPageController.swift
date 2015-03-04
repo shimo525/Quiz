@@ -122,7 +122,8 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var alert = UIAlertController(title: "", message: "Delete this question?", preferredStyle: UIAlertControllerStyle.ActionSheet)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-            var id = myQuizArray[indexPath.row].objectForKey("objectID") as String
+            var id = myQuizArray[indexPath.row].objectId
+            println(id)
             myQuizArray.removeAtIndex(indexPath.row)
             self.myHeaderView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.DeleteMyQuizData(id)

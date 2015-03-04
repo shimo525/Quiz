@@ -19,6 +19,9 @@ class FirstTabBarController: UITabBarController {
         /*var contentView = self.tabBar.subviews[0] as UIView
         contentView.frame = CGRectMake(0, tabHeight, windowSize.width, windowSize.height - tabHeight)*/
         // Do any additional setup after loading the view.
+        
+        println("\(self.navigationController?.navigationBar.frame)")
+        println("\(self.tabBar.frame)")
     }
     
     override func didReceiveMemoryWarning() {
