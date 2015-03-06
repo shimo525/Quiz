@@ -68,7 +68,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){
         var query:PFQuery = PFQuery(className:"quiz")
         query.whereKey("name", equalTo:PFUser.currentUser().username)
-        query.orderByAscending("CreatedAt")
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
             if error != nil{//エラー処理
                 println("error")

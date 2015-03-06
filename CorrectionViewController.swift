@@ -96,7 +96,9 @@ class CorrectionViewController: UITabBarController {
         let index = self.navigationController?.viewControllers.count
         var previousController = self.navigationController?.viewControllers[index! - 1] as UIViewController
         self.navigationController?.popToViewController(previousController, animated: true)*/
-        self.navigationController?.popToViewController(self.navigationController?.viewControllers[2] as UIViewController, animated: true)
+        println("\(self.navigationController?.viewControllers[0])")
+        println("\(self.navigationController?.viewControllers[1])")
+        println("\(self.navigationController?.viewControllers)")
     }
     
     override func didReceiveMemoryWarning() {

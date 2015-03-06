@@ -44,21 +44,26 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     @IBOutlet var headerView:UITableView!
     var refreshButton:UIBarButtonItem!
     var hud:MBProgressHUD!
+    var refreshControl:UIRefreshControl!
 
     func configure(){
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
+//        headerView
         headerView.frame = self.view.frame
-        
         //title
         self.title = "TimeLine"
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        headerView.addSubview(refreshControl)
     }
     
     //parse
     func loadQuizData(callback:([PFObject]!,NSError!) -> ()){
         var query:PFQuery = PFQuery(className:"quiz")
-        query.orderByDescending("CreatedAt")
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock{(objects:[AnyObject]!,error:NSError!) -> Void in
             if error != nil{//エラー処理
                 println("error")
@@ -68,13 +73,15 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     }
     
     func refresh(){
-        progressHud()
+//        progressHud()
         self.loadQuizData{ (quizes,error) -> () in
             quizArray = quizes
             println("loadedData")
-            self.hud.hide(true, afterDelay: 0.3)
+//            self.hud.hide(true, afterDelay: 0.3)
             self.headerView.reloadData()
         }
+        refreshControl.endRefreshing()
+//        refreshControl.removeFromSuperview()
     }
     
     func progressHud(){
