@@ -49,6 +49,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
+        headerView.frame = self.view.frame
         
         //title
         self.title = "TimeLine"

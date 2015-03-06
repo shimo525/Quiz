@@ -14,7 +14,6 @@ class CorrectionViewController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         configure()
-        println("\(myAnswer)")
     }
     
     //UI
@@ -29,7 +28,7 @@ class CorrectionViewController: UITabBarController {
             return self.view.frame
         }
     }
-    var myAnswer:String!
+    var correct:Bool!
     var correctAnswer:String!
     var index:Int!
     
@@ -47,7 +46,7 @@ class CorrectionViewController: UITabBarController {
         
         //messageText1
         messageText1 = UILabel()
-        if myAnswer == correctAnswer{
+        if correct == true{
             messageText1.text = "Congratulations!!!"
         }
         else{
@@ -60,7 +59,7 @@ class CorrectionViewController: UITabBarController {
         
         //messageText1
         messageText2 = UILabel()
-        if myAnswer == correctAnswer{
+        if correct == true{
             messageText2.text = "You chose right answer!!"
         }
         else{
@@ -81,7 +80,7 @@ class CorrectionViewController: UITabBarController {
         goButton.center = CGPointMake(originalFrame.width/2, 150)
         self.view.addSubview(goButton)
         
-        if myAnswer == correctAnswer{
+        if correct == true{
             correctionNumber()
         }
     }

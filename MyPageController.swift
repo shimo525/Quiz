@@ -62,6 +62,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     func configure(){
         myHeaderView.delegate = self
         myHeaderView.dataSource = self
+        myHeaderView.frame = self.view.frame
     }
     
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){

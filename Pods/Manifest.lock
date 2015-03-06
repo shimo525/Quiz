@@ -1,7 +1,7 @@
 PODS:
-  - Bolts (1.1.3)
+  - Bolts (1.1.4)
   - MBProgressHUD (0.9)
-  - Parse (1.6.2):
+  - Parse (1.6.4):
     - Bolts (~> 1.1)
 
 DEPENDENCIES:
@@ -9,8 +9,8 @@ DEPENDENCIES:
   - Parse
 
 SPEC CHECKSUMS:
-  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
-  Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
+  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
 
 COCOAPODS: 0.35.0

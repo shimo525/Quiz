@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,8 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     //UI
     var nameLabel:UILabel!
     var contentLabel:UILabel!
-    var optionPicker:UIPickerView!
+//    var optionPicker:UIPickerView!
+    var optionTable:UITableView!
     var barButtonRight:UIBarButtonItem!
     
     //originalFrame
@@ -32,7 +33,7 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     
     //parameter
     var texts:[String]!
-    var orderOptions:[String]!
+    var orderOptions:[String] = []
     var options:[String] = []
     var index:Int!
     
@@ -59,10 +60,18 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         options = shuffle(orderOptions)
         
         //opitonPicker
-        optionPicker = UIPickerView(frame: CGRectMake((originalFrame.width - 100)/2, originalFrame.height/2, 100, originalFrame.height/10))
+        /*optionPicker = UIPickerView(frame: CGRectMake((originalFrame.width - 100)/2, originalFrame.height/2, 100, originalFrame.height/10))
         optionPicker.dataSource = self
         optionPicker.delegate = self
-        self.view.addSubview(optionPicker)
+        self.view.addSubview(optionPicker)*/
+        
+        //optionTable
+        optionTable = UITableView(frame: CGRectMake(originalFrame.width/10, 200, (originalFrame.width/5)*4, 140))
+        optionTable.delegate = self
+        optionTable.dataSource = self
+        optionTable.scrollEnabled = false
+        optionTable.layer.borderColor = UIColor.blackColor().CGColor
+        self.view.addSubview(optionTable)
         
         //barButtonRight
         barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "done")
@@ -82,24 +91,37 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     
     //answerQuestion
     func done(){
-        var alert = UIAlertController(title:"", message:"Will you answer this question?", preferredStyle:UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-            var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
-            correctionController.myAnswer = self.options[self.optionPicker.selectedRowInComponent(0)]
-            correctionController.correctAnswer = self.orderOptions[0]
-            correctionController.index = self.index
-            correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-            self.presentViewController(correctionController, animated: true, completion:nil)
-            
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in
-        }))
-        self.presentViewController(alert, animated:true ,completion:nil)
+        if let indexPath = self.optionTable.indexPathForSelectedRow(){
+            var alert = UIAlertController(title:"", message:"Will you answer this question?", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                if let indexPath = self.optionTable.indexPathForSelectedRow(){
+                    var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
+                    if self.options[indexPath.row] == self.orderOptions[0]{
+                        correctionController.correct = true
+                    }
+                    else{
+                        correctionController.correct = false
+                    }
+                    correctionController.correctAnswer = self.orderOptions[0]
+                    correctionController.index = self.index
+                    correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+                    self.presentViewController(correctionController, animated: true, completion:nil)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in
+            }))
+            self.presentViewController(alert, animated: true ,completion: nil)
+        }
+        else{
+            var alert = UIAlertController(title: "", message: "Please choose your answer!!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     
     //pickerViewDelegate
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    /*func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
@@ -124,6 +146,34 @@ class AnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         let item = options[row]
         println(item)
         
+    }*/
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return orderOptions.count
+    }
+    
+    //tableViewDelegate
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = UITableViewCell()
+        cell.textLabel?.text = options[indexPath.row]
+        cell.layer.cornerRadius = 17.5
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 35
     }
 
     override func didReceiveMemoryWarning() {
