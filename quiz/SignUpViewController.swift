@@ -27,8 +27,26 @@ class SignUpViewController: UITabBarController {
         self.view.backgroundColor = UIColor.whiteColor()
     }
     
+    //UI
+    var nameText:UITextField!
+    var passWordText:UITextField!
+    var signupButton:UIButton!
+    
+    //parameter
+    var hud:MBProgressHUD!
+    
+    
+    func progressHud(){
+        //MBProgressHUD
+        self.hud = MBProgressHUD(view: self.view)
+        hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.mode = MBProgressHUDModeIndeterminate
+        hud.labelText = "Loading"
+        self.view.addSubview(hud)
+    }
+    
     func sign(){
-        /*if (nameText.text != "")&&(passWordText.text != ""){
+        if (nameText.text != "")&&(passWordText.text != ""){
             progressHud()
             var account = PFUser()
             account.username = nameText.text
@@ -39,31 +57,26 @@ class SignUpViewController: UITabBarController {
             checkExist.findObjectsInBackgroundWithBlock {
                 (objects: [AnyObject]!, error: NSError!) -> Void in
                     if(objects.count > 0){
-                        self.signIn(account.username, password:account.password)
+                        self.hud.hide(true, afterDelay: 0.3)
+                        var alert = UIAlertController(title:"", message:"this username is already used.", preferredStyle:UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                        }))
+                        self.presentViewController(alert, animated:true ,completion:nil)
+                        self.hud.hide(true, afterDelay: 0.3)
                     }
                     else{
-                        self.messageLabel.text = "Wrong password!!"
-                        self.messageLabel.sizeToFit()
-                        self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)
-                        
-                        self.hud.hide(true, afterDelay: 0.3)
-                        
+                        self.signUp(account)
                     }
-                if(objects.count > 0){
-                    self.messageLabel.text = "This username is already used."
-                    self.hud.hide(true, afterDelay: 0.3)
-                }
-                else{
-                    self.signUp(account)
-                }
             }
         }
         else{
-            messageLabel.text = "Please fill in the blank!!"
+        var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+        }))
+        self.presentViewController(alert, animated:true ,completion:nil)
         }
-        messageLabel.sizeToFit()
-        messageLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/1.7)*/
     }
+    
         func signUp(tweeter:PFUser) {
             tweeter.signUpInBackgroundWithBlock{
                 (success:Bool!, error:NSError!)->Void in
@@ -71,11 +84,12 @@ class SignUpViewController: UITabBarController {
                     println("Sign up succeeded.")
                     self.performSegueWithIdentifier("LogIn", sender: nil)
                 }else{
-/*                    self.messageLabel.text = "Error occured."
-                    self.messageLabel.sizeToFit()
-                    self.messageLabel.center = CGPointMake(self.originalFrame.width/2, self.originalFrame.height/1.7)*/
+                    var alert = UIAlertController(title:"", message:"Wrong password!!", preferredStyle:UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                    }))
+                    self.presentViewController(alert, animated:true ,completion:nil)
                 }
-//                self.hud.hide(true, afterDelay: 0.3)
+                self.hud.hide(true, afterDelay: 0.3)
             }
         }
 

@@ -19,14 +19,14 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-            self.performSegueWithIdentifier("LogIn", sender:nil)
-//            PFUser.logOut()
+//            self.performSegueWithIdentifier("LogIn", sender:nil)
+            PFUser.logOut()
         }
     }
     //UI
     var nameText:UITextField!
     var passWordText:UITextField!
-    var signupButton:UIButton!
+    var signinButton:UIButton!
     var facebookButton:UIButton!
     
     //parameter
@@ -48,6 +48,10 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         backGroundView.layer.cornerRadius = 15
         self.view.addSubview(backGroundView)
         
+        //gestureRecognizer
+        var gesture = UITapGestureRecognizer(target: self, action: "closeKeyboard")
+        self.view.addGestureRecognizer(gesture)
+        
         //nameTextField
         nameText = UITextField(frame: CGRectMake(originalFrame.width/6, 164, originalFrame.width/1.5, originalFrame.height/13))
         nameText.borderStyle = UITextBorderStyle.Bezel
@@ -65,16 +69,16 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         self.view.addSubview(passWordText)
         
         //signButton
-        signupButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signupButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
-        signupButton.setTitle("signup", forState: UIControlState.Normal)
-        signupButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        signupButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        signupButton.layer.cornerRadius = originalFrame.width/12
-        signupButton.layer.borderColor = UIColor.blackColor().CGColor
-        signupButton.backgroundColor = UIColor.whiteColor()
-        signupButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(signupButton)
+        signinButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        signinButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
+        signinButton.setTitle("signup", forState: UIControlState.Normal)
+        signinButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        signinButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        signinButton.layer.cornerRadius = originalFrame.width/12
+        signinButton.layer.borderColor = UIColor.blackColor().CGColor
+        signinButton.backgroundColor = UIColor.whiteColor()
+        signinButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(signinButton)
         
         //facebookLabel
         var facebookLabel = UILabel()
@@ -113,6 +117,7 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
             // Check already registerd user
             var checkExist = PFUser.query()
             checkExist.whereKey("username", equalTo: account.username)
+//            checkExist.whereKey("password", equalTo: account.password)
             checkExist.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]!, error: NSError!) -> Void in
                     if(objects.count > 0){
@@ -153,10 +158,14 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         }
     }
 
+    func closeKeyboard(){
+        self.view.endEditing(true)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("\(PFUser.currentUser().username)")
     }
+
     
     //textFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
