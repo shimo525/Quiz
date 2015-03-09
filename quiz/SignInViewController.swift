@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UITabBarController,UITextFieldDelegate {
+class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     //UI
     var nameText:UITextField!
     var passWordText:UITextField!
-    var signinButton:UIButton!
-    var facebookButton:UIButton!
+    var signButton:UIButton!
+    var facebookButton:FBLoginView!
     
     //parameter
     var originalFrame:CGRect!{
@@ -69,32 +69,28 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         self.view.addSubview(passWordText)
         
         //signButton
-        signinButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signinButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
-        signinButton.setTitle("signup", forState: UIControlState.Normal)
-        signinButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        signinButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        signinButton.layer.cornerRadius = originalFrame.width/12
-        signinButton.layer.borderColor = UIColor.blackColor().CGColor
-        signinButton.backgroundColor = UIColor.whiteColor()
-        signinButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(signinButton)
+        signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        signButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
+        signButton.setTitle("signin", forState: UIControlState.Normal)
+        signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        signButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        signButton.layer.cornerRadius = originalFrame.width/12
+        signButton.layer.borderColor = UIColor.blackColor().CGColor
+        signButton.backgroundColor = UIColor.whiteColor()
+        signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(signButton)
         
         //facebookLabel
         var facebookLabel = UILabel()
-        facebookLabel.text = "or you can sign up with..."
+        facebookLabel.text = "or you can sign in with..."
         facebookLabel.textColor = UIColor.blackColor()
         facebookLabel.sizeToFit()
         facebookLabel.center = CGPointMake(originalFrame.width/2, 382)
         self.view.addSubview(facebookLabel)
         
         //facebookButton
-        facebookButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        facebookButton = FBLoginView()
         facebookButton.frame = CGRectMake(originalFrame.width/6, 405, originalFrame.width/1.5, originalFrame.height/10.4)
-        facebookButton.setTitle("FaceBook", forState: UIControlState.Normal)
-        facebookButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        facebookButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
-        facebookButton.layer.borderColor = UIColor.blackColor().CGColor
         self.view.addSubview(facebookButton)
         
     }
@@ -163,7 +159,8 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("\(PFUser.currentUser().username)")
+        var userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setObject(PFUser.currentUser().objectId, forKey: "userData")
     }
 
     
@@ -181,7 +178,9 @@ class SignInViewController: UITabBarController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //FBLoginViewDelegate
 
+    
     /*
     // MARK: - Navigation
 

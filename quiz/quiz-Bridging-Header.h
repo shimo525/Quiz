@@ -3,3 +3,4 @@
 //
 #import <Parse/Parse.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import <FacebookSDK/FacebookSDK.h>
