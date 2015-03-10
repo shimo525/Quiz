@@ -92,13 +92,11 @@ class CorrectionViewController: UITabBarController {
     }
     
     func goBack(){
-        /*
-        let index = self.navigationController?.viewControllers.count
-        var previousController = self.navigationController?.viewControllers[index! - 1] as UIViewController
-        self.navigationController?.popToViewController(previousController, animated: true)*/
-        println("\(self.navigationController?.viewControllers[0])")
-        println("\(self.navigationController?.viewControllers[1])")
-        println("\(self.navigationController?.viewControllers)")
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+//        let viewControllers = self.navigationController?.viewControllers[0] as UINavigationController
+//        self.navigationController?.popToViewController(viewControllers, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

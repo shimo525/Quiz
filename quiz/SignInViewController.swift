@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDelegate {
 
     override func viewDidLoad() {
@@ -19,8 +20,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-//            self.performSegueWithIdentifier("LogIn", sender:nil)
-            PFUser.logOut()
+            self.performSegueWithIdentifier("LogIn", sender:nil)
+//            PFUser.logOut()
         }
     }
     //UI
@@ -57,6 +58,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         nameText.borderStyle = UITextBorderStyle.Bezel
         nameText.backgroundColor = UIColor.whiteColor()
         nameText.delegate = self
+        nameText.clearButtonMode = UITextFieldViewMode.Always
         nameText.placeholder = "username"
         self.view.addSubview(nameText)
         
@@ -79,6 +81,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         signButton.backgroundColor = UIColor.whiteColor()
         signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signButton)
+    
         
         //facebookLabel
         var facebookLabel = UILabel()
@@ -91,6 +94,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         //facebookButton
         facebookButton = FBLoginView()
         facebookButton.frame = CGRectMake(originalFrame.width/6, 405, originalFrame.width/1.5, originalFrame.height/10.4)
+        facebookButton.delegate = self
         self.view.addSubview(facebookButton)
         
     }
@@ -99,7 +103,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         //MBProgressHUD
         self.hud = MBProgressHUD(view: self.view)
         hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.mode = MBProgressHUDModeIndeterminate
+        hud.mode = MBProgressHUDMode.Indeterminate
         hud.labelText = "Loading"
         self.view.addSubview(hud)
     }
@@ -173,13 +177,18 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     func textFieldShouldClear(textField: UITextField) -> Bool {
         return true
     }
+    
      override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     //FBLoginViewDelegate
-
+    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
+        let str = user.objectForKey("Email") as String?
+        println("\(str)")
+//        println("a")
+    }
     
     /*
     // MARK: - Navigation

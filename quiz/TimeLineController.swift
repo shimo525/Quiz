@@ -57,6 +57,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.frame = CGRectMake(0, 0, 0, 0)
         headerView.addSubview(refreshControl)
     }
     
@@ -68,6 +69,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
             if error != nil{//エラー処理
                 println("error")
             }
+            println("\(objects)")
             callback(objects as [PFObject] ,error)
         }
     }
@@ -88,7 +90,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         //MBProgressHUD
         self.hud = MBProgressHUD(view: self.view)
         hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.mode = MBProgressHUDModeIndeterminate
+        hud.mode = MBProgressHUDMode.Indeterminate
         hud.labelText = "Loading"
         self.view.addSubview(hud)
     }

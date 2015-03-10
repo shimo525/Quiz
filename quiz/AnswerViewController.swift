@@ -8,6 +8,8 @@
 
 import UIKit
 
+var answered:Bool!
+
 class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     override func viewDidLoad() {
@@ -16,6 +18,14 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         // Do any additional setup after loading the view.
         configure()
     }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if answered == true{
+            self.navigationController?.popViewControllerAnimated(false)
+            answered = false
+        }
+    }
+    
     
     //UI
     var nameLabel:UILabel!
@@ -94,19 +104,18 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         if let indexPath = self.optionTable.indexPathForSelectedRow(){
             var alert = UIAlertController(title:"", message:"Will you answer this question?", preferredStyle:UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-                if let indexPath = self.optionTable.indexPathForSelectedRow(){
-                    var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
-                    if self.options[indexPath.row] == self.orderOptions[0]{
-                        correctionController.correct = true
-                    }
-                    else{
-                        correctionController.correct = false
-                    }
-                    correctionController.correctAnswer = self.orderOptions[0]
-                    correctionController.index = self.index
-                    correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-                    self.presentViewController(correctionController, animated: true, completion:nil)
+                answered = true
+                var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
+                if self.options[indexPath.row] == self.orderOptions[0]{
+                    correctionController.correct = true
                 }
+                else{
+                    correctionController.correct = false
+                }
+                correctionController.correctAnswer = self.orderOptions[0]
+                correctionController.index = self.index
+                correctionController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+                self.presentViewController(correctionController, animated: true, completion:nil)
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {action in
             }))

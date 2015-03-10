@@ -85,7 +85,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         //MBProgressHUD
         self.hud = MBProgressHUD(view: self.view)
         hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        hud.mode = MBProgressHUDModeIndeterminate
+        hud.mode = MBProgressHUDMode.Indeterminate
         hud.labelText = "Loading"
         self.view.addSubview(hud)
     }

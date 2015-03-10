@@ -26,10 +26,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var defaultACL = PFACL()
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
         
+        //FaceBook
+        FBAppEvents.activateApp()
+        
         //Window
         windowSize = UIScreen.mainScreen().bounds
         
+        //parameter
+        answered = false
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
 
     func applicationWillResignActive(application: UIApplication) {
