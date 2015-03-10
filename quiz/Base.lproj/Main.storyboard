@@ -164,7 +164,7 @@
                             <constraint firstItem="Gdp-Ci-n2X" firstAttribute="top" secondItem="0zC-Ur-8iu" secondAttribute="topMargin" id="XGU-80-EfT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TimeLine" id="gfg-Xc-gAo"/>
+                    <tabBarItem key="tabBarItem" title="TimeLine" image="timeline.gif" id="gfg-Xc-gAo"/>
                     <connections>
                         <outlet property="headerView" destination="Gdp-Ci-n2X" id="Gml-5u-FdB"/>
                         <segue destination="xLH-R4-gWD" kind="show" identifier="Answer" id="ayL-EZ-gM9"/>
@@ -239,7 +239,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="pgC-fo-ChG" secondAttribute="trailing" constant="-22" id="vU8-bl-y6V"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MyPage" id="9gP-ui-ek5"/>
+                    <tabBarItem key="tabBarItem" title="MyPage" image="mypage.gif" id="9gP-ui-ek5"/>
                     <connections>
                         <outlet property="myHeaderView" destination="pgC-fo-ChG" id="Jjm-gv-WYm"/>
                     </connections>
@@ -327,4 +327,8 @@
             <point key="canvasLocation" x="916.875" y="1094.3661971830986"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mypage.gif" width="30" height="30"/>
+        <image name="timeline.gif" width="30" height="30"/>
+    </resources>
 </document>

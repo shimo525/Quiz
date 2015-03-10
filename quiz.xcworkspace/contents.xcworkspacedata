@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:mypage.jpg">
+   </FileRef>
+   <FileRef
       location = "group:quiz.xcodeproj">
    </FileRef>
    <FileRef

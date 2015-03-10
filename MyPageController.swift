@@ -35,8 +35,18 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         tabBarController.refreshDelegate = self
     }
     
-    func refresh(){
+    
+    func refreshCon(){
+        refresh()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshBut(){
         progressHud()
+        refresh()
+    }
+    
+    func refresh(){
         self.loadMyQuizData{ (quizes,error) -> () in
             myQuizArray = quizes
             println("loadedMyData")
@@ -58,11 +68,18 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     @IBOutlet var myHeaderView:UITableView!
     var barButtonLeft:UIBarButtonItem!
     var hud:MBProgressHUD!
+    var refreshControl:UIRefreshControl!
     
     func configure(){
         myHeaderView.delegate = self
         myHeaderView.dataSource = self
         myHeaderView.frame = self.view.frame
+        
+        //refreshControl
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshCon", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.frame = CGRectMake(0, 0, 0, 0)
+        myHeaderView.addSubview(refreshControl)
     }
     
     func loadMyQuizData(callback:([PFObject]!,NSError!) -> ()){

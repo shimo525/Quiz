@@ -56,7 +56,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         self.title = "TimeLine"
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "refreshCon", forControlEvents: UIControlEvents.ValueChanged)
         refreshControl.frame = CGRectMake(0, 0, 0, 0)
         headerView.addSubview(refreshControl)
     }
@@ -74,6 +74,17 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         }
     }
     
+    func refreshCon(){
+        refresh()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshBut(){
+        progressHud()
+        refresh()
+    }
+    
+    
     func refresh(){
 //        progressHud()
         self.loadQuizData{ (quizes,error) -> () in
@@ -82,7 +93,6 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
 //            self.hud.hide(true, afterDelay: 0.3)
             self.headerView.reloadData()
         }
-        refreshControl.endRefreshing()
 //        refreshControl.removeFromSuperview()
     }
     

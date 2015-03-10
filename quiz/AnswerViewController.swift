@@ -30,6 +30,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     //UI
     var nameLabel:UILabel!
     var contentLabel:UILabel!
+    var timeLabel:UILabel!
 //    var optionPicker:UIPickerView!
     var optionTable:UITableView!
     var barButtonRight:UIBarButtonItem!
@@ -45,7 +46,10 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     var texts:[String]!
     var orderOptions:[String] = []
     var options:[String] = []
-    var index:Int!
+    var index:Int = 0
+    //time
+    var timer:NSTimer!
+    var pastSecond:Int = 0
     
     func configure(){
         //UI
@@ -65,6 +69,11 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         contentLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
         contentLabel.sizeToFit()
         self.view.addSubview(contentLabel)
+        
+        //timeLabel&timer
+        timeLabel = UILabel(frame: CGRectMake(0, 0, 0, 0))
+        timeLabel.text = "0"
+        timer = NSTimer(timeInterval: 1.0, target: self, selector:"everySecond", userInfo: nil, repeats: true)
         
         //options
         options = shuffle(orderOptions)
@@ -97,6 +106,22 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
             swap(&list[i], &list[j])
         }
         return list
+    }
+    
+    //timer
+    func everySecond(){
+        pastSecond += 1
+        if pastSecond == 15{
+            var alert = UIAlertController(title: "", message: "Oh!! You spent too much time!!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:{action in
+                self.navigationController?.popViewControllerAnimated(true)
+                var n = 0
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else{
+            
+        }
     }
     
     //answerQuestion

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RefreshButton{
-    func refresh()
+    func refreshBut()
 }
 
 class TabBarController: UITabBarController {
@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
     var refreshDelegate:RefreshButton!
     
     func reload(){
-        refreshDelegate.refresh()
+        refreshDelegate.refreshBut()
     }
     
     func add(){
