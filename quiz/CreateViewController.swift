@@ -37,7 +37,7 @@ class CreateViewController: UIViewController{
     
     func configure(){
         //selfview
-        self.view.backgroundColor = UIColor.grayColor()
+//        self.view.backgroundColor = UIColor.grayColor()
         
         //titleBar
         self.navigationItem.title = "Create"

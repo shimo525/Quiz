@@ -53,39 +53,38 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func configure(){
         //UI
+        //selfView
+//        self.view.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.2)
+//        self.view.backgroundColor = UIColor.grayColor()
+        
         //title
-        self.title = texts[0]
+        self.navigationItem.title = texts[0]
         
         //nameLabel
         nameLabel = UILabel()
         nameLabel.text = texts[1]
         nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
+//        contentLabel.font = UIFont(name: "Verdana", size: 30)
         nameLabel.sizeToFit()
         self.view.addSubview(nameLabel)
         
         //contentLabel
-        contentLabel = UILabel()
+        contentLabel = UILabel(frame: CGRectMake(originalFrame.width/10, 100, (originalFrame.width/5)*4, 80))
         contentLabel.text = texts[2]
-        contentLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/6)
-        contentLabel.sizeToFit()
+//        contentLabel.font = UIFont(name: "Verdana", size: 36)
         self.view.addSubview(contentLabel)
         
         //timeLabel&timer
         timeLabel = UILabel(frame: CGRectMake(0, 0, 0, 0))
         timeLabel.text = "0"
+        timeLabel.font = UIFont(name: "System", size: 25)
         timer = NSTimer(timeInterval: 1.0, target: self, selector:"everySecond", userInfo: nil, repeats: true)
         
         //options
         options = shuffle(orderOptions)
-        
-        //opitonPicker
-        /*optionPicker = UIPickerView(frame: CGRectMake((originalFrame.width - 100)/2, originalFrame.height/2, 100, originalFrame.height/10))
-        optionPicker.dataSource = self
-        optionPicker.delegate = self
-        self.view.addSubview(optionPicker)*/
-        
+
         //optionTable
-        optionTable = UITableView(frame: CGRectMake(originalFrame.width/10, 200, (originalFrame.width/5)*4, 140))
+        optionTable = UITableView(frame: CGRectMake(originalFrame.width/10, 220, (originalFrame.width/5)*4, 200))
         optionTable.delegate = self
         optionTable.dataSource = self
         optionTable.scrollEnabled = false
@@ -120,7 +119,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
             self.presentViewController(alert, animated: true, completion: nil)
         }
         else{
-            
+            timeLabel.text = pastSecond.description
         }
     }
     
@@ -153,34 +152,6 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
     }
     
-    
-    //pickerViewDelegate
-    /*func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return options.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        if component == 0{
-            return 100
-        }
-        else{
-            return 20
-        }
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        let item = options[row]
-        return item
-    }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let item = options[row]
-        println(item)
-        
-    }*/
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
@@ -207,7 +178,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 35
+        return 50
     }
 
     override func didReceiveMemoryWarning() {

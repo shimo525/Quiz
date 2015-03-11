@@ -52,6 +52,7 @@ class CorrectionViewController: UITabBarController {
         else{
             messageText1.text = "Oh No!"
         }
+        messageText1.font = UIFont(name: "System", size: 35)
         messageText1.sizeToFit()
         messageText1.center = CGPointMake(originalFrame.width/2, 80)
         messageText1.textColor = UIColor.blackColor()

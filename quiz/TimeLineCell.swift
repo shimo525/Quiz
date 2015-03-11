@@ -25,11 +25,12 @@ class TimeLineCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setText(name:String,title:String,num:Int){
+    func setCell(name:String,title:String,num:Int){
         self.nameLabel.text = name
         self.titleLabel.text = title
         self.numberLabel.text = num.description
-        
+        self.selectionStyle = UITableViewCellSelectionStyle.Blue
+        self.backgroundColor = UIColor(red: 1, green: 1, blue: 11, alpha: 0)
     }
 
 }

@@ -50,6 +50,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
+        headerView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.3)
 //        headerView
         headerView.frame = self.view.frame
         //title
@@ -90,7 +91,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         self.loadQuizData{ (quizes,error) -> () in
             quizArray = quizes
             println("loadedData")
-//            self.hud.hide(true, afterDelay: 0.3)
+            self.hud.hide(true, afterDelay: 0.3)
             self.headerView.reloadData()
         }
 //        refreshControl.removeFromSuperview()
@@ -125,7 +126,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
                 let answerController = segue.destinationViewController as AnswerViewController
                 answerController.texts = [titleText!,nameText!,contentText!]
                 answerController.orderOptions = options
-                answerController.index = row
+                answerController.index = row!
             }
             
         }
@@ -144,11 +145,12 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         var nameText:String? = quizArray[indexPath.row].objectForKey("name") as? String
         var titleText:String? = quizArray[indexPath.row].objectForKey("title") as? String
         var number:Int? = quizArray[indexPath.row].objectForKey("correction") as? Int
-        cell.setText(nameText!, title: titleText! ,num: number!)
+        cell.setCell(nameText!, title: titleText! ,num: number!)
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         self.performSegueWithIdentifier("Answer", sender: indexPath.row)
     }
     

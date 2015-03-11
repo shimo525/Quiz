@@ -74,6 +74,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         myHeaderView.delegate = self
         myHeaderView.dataSource = self
         myHeaderView.frame = self.view.frame
+        myHeaderView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.3)
         
         //refreshControl
         refreshControl = UIRefreshControl()
@@ -132,7 +133,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
         let titleText = myQuizArray[indexPath.row].objectForKey("title") as? String
         var number:Int? = myQuizArray[indexPath.row].objectForKey("correction") as? Int
-        cell.setText(PFUser.currentUser().username, title: titleText!,num: number!)
+        cell.setCell(PFUser.currentUser().username, title: titleText!,num: number!)
         
         return cell
     }
