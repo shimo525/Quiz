@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CreateViewController: UIViewController{
+class CreateViewController: UIViewController,UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class CreateViewController: UIViewController{
     func configure(){
         //selfview
 //        self.view.backgroundColor = UIColor.grayColor()
+//        self.view.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.2)
         
         //titleBar
         self.navigationItem.title = "Create"
@@ -47,12 +48,15 @@ class CreateViewController: UIViewController{
         titleText = UITextField(frame: CGRectMake(originalFrame.width/6, originalFrame.height/9, originalFrame.width/1.5, 35))
         titleText.borderStyle = UITextBorderStyle.Bezel
         titleText.layer.backgroundColor = UIColor.whiteColor().CGColor
+        titleText.placeholder = "Title"
 //        titleText.delegate = self
         self.view.addSubview(titleText)
         
         //contentText
-        contentText = UITextView(frame: CGRectMake(0, titleText.frame.maxY + 5, originalFrame.width, originalFrame.height/6))
+        contentText = UITextView(frame: CGRectMake(originalFrame.width/10, titleText.frame.maxY + 5, (originalFrame.width/5)*4, originalFrame.height/6))
         contentText.layer.backgroundColor = UIColor.whiteColor().CGColor
+//        contentText.layer.b
+        contentText.font = UIFont(name: "Verdana", size: 30)
         self.view.addSubview(contentText)
         
         //choicesText
@@ -62,10 +66,10 @@ class CreateViewController: UIViewController{
             choiceText.borderStyle = UITextBorderStyle.Bezel
 //            choiceText.delegate = self
             choiceText.layer.backgroundColor = UIColor.whiteColor().CGColor
+            choiceText.placeholder = "Choice\(l+1)"
             choiceTexts.append(choiceText)
             self.view.addSubview(choiceText)
         }
-        
         
         //explainLabel
         var explainLabel = UILabel()
@@ -131,6 +135,7 @@ class CreateViewController: UIViewController{
         }
     }
     
+//    func text
     /*
     // MARK: - Navigation
 

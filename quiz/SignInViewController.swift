@@ -20,8 +20,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-            self.performSegueWithIdentifier("LogIn", sender:nil)
-//            PFUser.logOut()
+//            self.performSegueWithIdentifier("LogIn", sender:nil)
+            PFUser.logOut()
         }
     }
     //UI

@@ -64,7 +64,8 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         nameLabel = UILabel()
         nameLabel.text = texts[1]
         nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
-//        contentLabel.font = UIFont(name: "Verdana", size: 30)
+        nameLabel.font = UIFont(name: "Verdana", size: 30)
+//        nameLabel.p
         nameLabel.sizeToFit()
         self.view.addSubview(nameLabel)
         
