@@ -17,7 +17,8 @@ class CorrectionViewController: UITabBarController {
     }
     
     //UI
-    var correctionText:UILabel!
+    var correctionTexr1:UILabel!
+    var correctionText2:UILabel!
     var messageText1:UILabel!
     var messageText2:UILabel!
     var goButton:UIButton!
@@ -36,13 +37,21 @@ class CorrectionViewController: UITabBarController {
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
         
-        //correctionText
-        correctionText = UILabel()
-        correctionText.text = correctAnswer
-        correctionText.textColor = UIColor.blackColor()
-        correctionText.sizeToFit()
-        correctionText.center = CGPointMake(originalFrame.width/2, 50)
-        self.view.addSubview(correctionText)
+        //corrctionText1
+        correctionTexr1 = UILabel()
+        correctionTexr1.text = "The correct answer is ..."
+        correctionTexr1.textColor = UIColor.blackColor()
+        correctionTexr1.sizeToFit()
+        correctionTexr1.center = CGPointMake(originalFrame.width/2,30)
+        self.view.addSubview(correctionTexr1)
+        
+        //correctionText2
+        correctionText2 = UILabel()
+        correctionText2.text = "\(correctAnswer)"
+        correctionText2.textColor = UIColor.blackColor()
+        correctionText2.sizeToFit()
+        correctionText2.center = CGPointMake(originalFrame.width/2, 70)
+        self.view.addSubview(correctionText2)
         
         //messageText1
         messageText1 = UILabel()
@@ -52,10 +61,10 @@ class CorrectionViewController: UITabBarController {
         else{
             messageText1.text = "Oh No!"
         }
-        messageText1.font = UIFont(name: "System", size: 35)
+        messageText1.font = UIFont(name: "Verdana", size: 35)
         messageText1.sizeToFit()
-        messageText1.center = CGPointMake(originalFrame.width/2, 80)
-        messageText1.textColor = UIColor.blackColor()
+        messageText1.center = CGPointMake(originalFrame.width/2, 100)
+        messageText1.textColor = UIColor.redColor()
         self.view.addSubview(messageText1)
         
         //messageText1
@@ -67,8 +76,9 @@ class CorrectionViewController: UITabBarController {
             messageText2.text = "You chose wrong answer!"
         }
         messageText2.sizeToFit()
-        messageText2.center = CGPointMake(originalFrame.width/2, 100)
+        messageText2.center = CGPointMake(originalFrame.width/2, 140)
         messageText2.textColor = UIColor.blackColor()
+        self.view.addSubview(messageText2)
         
         //button
         goButton = UIButton()
@@ -78,7 +88,7 @@ class CorrectionViewController: UITabBarController {
         goButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
         goButton.layer.borderColor = UIColor.blackColor().CGColor
         goButton.sizeToFit()
-        goButton.center = CGPointMake(originalFrame.width/2, 150)
+        goButton.center = CGPointMake(originalFrame.width/2, 230)
         self.view.addSubview(goButton)
         
         if correct == true{

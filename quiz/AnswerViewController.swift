@@ -63,15 +63,17 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         //nameLabel
         nameLabel = UILabel()
         nameLabel.text = texts[1]
-        nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
-        nameLabel.font = UIFont(name: "Verdana", size: 30)
+        nameLabel.font = UIFont(name: "Verdana", size: 26)
         nameLabel.sizeToFit()
+        nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
         self.view.addSubview(nameLabel)
         
         //contentLabel
-        contentLabel = UILabel(frame: CGRectMake(originalFrame.width/10, 100, (originalFrame.width/5)*4, 80))
+        contentLabel = UILabel(frame: CGRectMake(originalFrame.width/10, 100, (originalFrame.width/5)*4, 60))
         contentLabel.text = texts[2]
-        contentLabel.font = UIFont(name: "Verdana", size: 36)
+        contentLabel.numberOfLines = 0
+        contentLabel.font = UIFont(name: "Verdana", size: 20)
+        contentLabel.sizeToFit()
         self.view.addSubview(contentLabel)
         
         //timeLabel&timer

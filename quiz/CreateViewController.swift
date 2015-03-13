@@ -56,9 +56,7 @@ class CreateViewController: UIViewController,UITextFieldDelegate{
         contentText = UITextView(frame: CGRectMake(originalFrame.width/10, titleText.frame.maxY + 5, (originalFrame.width/5)*4, originalFrame.height/6))
         contentText.layer.backgroundColor = UIColor.whiteColor().CGColor
         contentText.layer.borderColor = UIColor.blackColor().CGColor
-
-//        contentText.layer.b
-        contentText.font = UIFont(name: "Verdana", size: 30)
+        contentText.font = UIFont(name: "Verdana", size: 23)
         self.view.addSubview(contentText)
         
         //choicesText

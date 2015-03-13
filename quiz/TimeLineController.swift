@@ -25,7 +25,6 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
             println("loadedData")
             self.headerView.reloadData()
         }
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -50,10 +49,9 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
-        headerView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.3)
-        
-//        headerView
+        headerView.backgroundColor = UIColor(red: 80/255, green: 20/255, blue: 1, alpha: 0.1)
         headerView.frame = self.view.frame
+        
         //title
         self.title = "TimeLine"
         
@@ -154,6 +152,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         
         self.performSegueWithIdentifier("Answer", sender: indexPath.row)
     }
+    
     
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

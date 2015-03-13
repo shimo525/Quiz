@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         
         //selfNavigationBar
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.5)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 135/255, green: 148/255, blue: 1, alpha: 0.5)
         
         //barButtonRight
         barButtonRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action:"add")
@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         self.navigationItem.leftBarButtonItem = barButtonLeft
         
         //tabBar
-        self.tabBar.barTintColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.5)
+        self.tabBar.barTintColor = UIColor(red: 135/255, green: 148/255, blue: 1, alpha: 0.5)
     }
     
     var barButtonRight:UIBarButtonItem!

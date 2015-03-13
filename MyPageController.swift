@@ -74,7 +74,8 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         myHeaderView.delegate = self
         myHeaderView.dataSource = self
         myHeaderView.frame = self.view.frame
-        myHeaderView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.3)
+//        myHeaderView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.2)
+        myHeaderView.backgroundColor = UIColor(red: 80/255, green: 20/255, blue: 1, alpha: 0.1)
         
         //refreshControl
         refreshControl = UIRefreshControl()
