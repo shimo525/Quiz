@@ -65,11 +65,11 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         nameLabel.text = texts[1]
         nameLabel.font = UIFont(name: "Verdana", size: 26)
         nameLabel.sizeToFit()
-        nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/8)
+        nameLabel.center = CGPointMake(originalFrame.width/2, originalFrame.height/7.9)
         self.view.addSubview(nameLabel)
         
         //contentLabel
-        contentLabel = UILabel(frame: CGRectMake(originalFrame.width/10, 100, (originalFrame.width/5)*4, 60))
+        contentLabel = UILabel(frame: CGRectMake(originalFrame.width/10, 103, (originalFrame.width/5)*4, 60))
         contentLabel.text = texts[2]
         contentLabel.numberOfLines = 0
         contentLabel.font = UIFont(name: "Verdana", size: 20)
@@ -91,6 +91,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
         optionTable.dataSource = self
         optionTable.scrollEnabled = false
         optionTable.layer.borderColor = UIColor.blackColor().CGColor
+        optionTable.layer.borderWidth = 0.5
         self.view.addSubview(optionTable)
         
         //barButtonRight

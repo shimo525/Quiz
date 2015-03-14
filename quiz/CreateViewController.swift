@@ -53,10 +53,11 @@ class CreateViewController: UIViewController,UITextFieldDelegate{
         self.view.addSubview(titleText)
         
         //contentText
-        contentText = UITextView(frame: CGRectMake(originalFrame.width/10, titleText.frame.maxY + 5, (originalFrame.width/5)*4, originalFrame.height/6))
+        contentText = UITextView(frame: CGRectMake(originalFrame.width/10, titleText.frame.maxY + 5, (originalFrame.width/5)*4, 80))
         contentText.layer.backgroundColor = UIColor.whiteColor().CGColor
         contentText.layer.borderColor = UIColor.blackColor().CGColor
-        contentText.font = UIFont(name: "Verdana", size: 23)
+        contentText.layer.borderWidth = 0.5
+        contentText.font = UIFont(name: "Verdana", size: 15)
         self.view.addSubview(contentText)
         
         //choicesText
@@ -72,22 +73,22 @@ class CreateViewController: UIViewController,UITextFieldDelegate{
         }
         
         //explainLabel
-        var explainLabel = UILabel()
+        var explainLabel = UILabel(frame: CGRectMake(originalFrame.width/14, contentText.frame.maxY + 150, (originalFrame.width/7)*6, 60))
         explainLabel.text = "First answer will be the right answer of this question!!"
-        explainLabel.textColor = UIColor.whiteColor()
-        explainLabel.font = UIFont(name: "System", size: 5)
+        explainLabel.textColor = UIColor.blackColor()
+        explainLabel.numberOfLines = 0
+        explainLabel.font = UIFont(name: "Verdana", size: 12)
         explainLabel.sizeToFit()
-        explainLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
+//        explainLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 155)
         self.view.addSubview(explainLabel)
         
         
         //messageLabel
-        messageLabel = UILabel()
+        messageLabel = UILabel(frame: CGRectMake(originalFrame.width/14, contentText.frame.maxY + 190,(originalFrame.width/7)*6, 30))
         messageLabel.text = "Please create at least two choices!!"
-        messageLabel.textColor = UIColor.redColor()
-        messageLabel.font = UIFont(name: "System", size: 12)
+        messageLabel.textColor = UIColor.blackColor()
+        messageLabel.font = UIFont(name: "Verdata", size: 12)
         messageLabel.sizeToFit()
-        messageLabel.center = CGPointMake(originalFrame.width/2, contentText.frame.maxY + 170)
         self.view.addSubview(messageLabel)
         
         //barButtonRight
