@@ -17,7 +17,7 @@ class CorrectionViewController: UITabBarController {
     }
     
     //UI
-    var correctionTexr1:UILabel!
+    var correctionText1:UILabel!
     var correctionText2:UILabel!
     var messageText1:UILabel!
     var messageText2:UILabel!
@@ -38,19 +38,23 @@ class CorrectionViewController: UITabBarController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         //corrctionText1
-        correctionTexr1 = UILabel()
-        correctionTexr1.text = "The correct answer is ..."
-        correctionTexr1.textColor = UIColor.blackColor()
-        correctionTexr1.sizeToFit()
-        correctionTexr1.center = CGPointMake(originalFrame.width/2,30)
-        self.view.addSubview(correctionTexr1)
+        correctionText1 = UILabel()
+        correctionText1.text = "The correct answer is ..."
+        correctionText1.textColor = UIColor.blackColor()
+        correctionText1.font = UIFont(name: "Verdana", size: 17)
+        correctionText1.sizeToFit()
+        correctionText1.center = CGPointMake(originalFrame.width/2,30)
+        self.view.addSubview(correctionText1)
         
         //correctionText2
         correctionText2 = UILabel()
         correctionText2.text = "\(correctAnswer)"
         correctionText2.textColor = UIColor.blackColor()
+        correctionText2.font = UIFont(name: "Verdana", size: 17)
         correctionText2.sizeToFit()
-        correctionText2.center = CGPointMake(originalFrame.width/2, 70)
+        correctionText2.layer.borderWidth = 0.3
+        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
+        correctionText2.center = CGPointMake(originalFrame.width/2, 55)
         self.view.addSubview(correctionText2)
         
         //messageText1
@@ -81,14 +85,13 @@ class CorrectionViewController: UITabBarController {
         self.view.addSubview(messageText2)
         
         //button
-        goButton = UIButton()
+        goButton = UIButton(frame: CGRectMake(originalFrame.width/2 - 50, originalFrame.height/1.8, 100, 50))
         goButton.setTitle("back", forState: UIControlState.Normal)
         goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         goButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         goButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
         goButton.layer.borderColor = UIColor.blackColor().CGColor
-        goButton.sizeToFit()
-        goButton.center = CGPointMake(originalFrame.width/2, 230)
+        goButton.layer.borderWidth = 0.5
         self.view.addSubview(goButton)
         
         if correct == true{

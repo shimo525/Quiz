@@ -9,6 +9,7 @@
         <scene sceneID="Irb-Mg-q6C">
             <objects>
                 <navigationController storyboardIdentifier="naviCon" id="sPb-sW-LuH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3n7-bW-QgM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KU3-At-dgX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -51,6 +52,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="SignUp" id="azG-Ki-ZEm"/>
+                    <connections>
+                        <segue destination="sPb-sW-LuH" kind="presentation" identifier="LogIn" id="dqD-Fo-pp5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atn-Rr-i4t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -298,7 +302,7 @@
                     <view key="view" contentMode="scaleToFill" id="xQY-B1-H9X">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.82604508489999995" green="0.85970212069999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eoo-Oc-1Ji"/>
                 </viewController>
@@ -317,7 +321,7 @@
                     <view key="view" contentMode="scaleToFill" id="xLV-MM-88h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.82604508489999995" green="0.85970212069999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNp-3I-g6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -329,4 +333,7 @@
         <image name="mypage.gif" width="30" height="30"/>
         <image name="timeline.gif" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dqD-Fo-pp5"/>
+    </inferredMetricsTieBreakers>
 </document>

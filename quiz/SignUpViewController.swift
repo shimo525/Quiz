@@ -64,6 +64,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
         passWordText.placeholder = "password"
+        passWordText.secureTextEntry = true
         self.view.addSubview(passWordText)
         
         //signButton
@@ -92,51 +93,45 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     
     func sign(){
         if (nameText.text != "")&&(passWordText.text != ""){
-            var userDefault = NSUserDefaults.standardUserDefaults()
-            if let userId = userDefault.objectForKey("") as? String{
-                var alert = UIAlertController(title:"", message:"Will you delete \(userId)", preferredStyle:UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-                    self.progressHud()
-                    var account = PFUser()
-                    account.username = self.nameText.text
-                    account.password = self.passWordText.text
-                    // Check already registerd user
-                    var checkExist = PFUser.query()
-                    checkExist.whereKey("username", equalTo: account.username)
-                    checkExist.findObjectsInBackgroundWithBlock {
-                        (objects: [AnyObject]!, error: NSError!) -> Void in
-                        if(objects.count > 0){
-                            self.hud.hide(true, afterDelay: 0.3)
-                            var alert = UIAlertController(title:"", message:"This username is already used.", preferredStyle:UIAlertControllerStyle.Alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-                            }))
-                            self.presentViewController(alert, animated:true ,completion:nil)
-                            self.hud.hide(true, afterDelay: 0.3)
-                        }
-                        else{
-                            self.signUp(account)
-                        }
-                    }
-                }))
-                self.presentViewController(alert, animated:true ,completion:nil)
+            self.progressHud()
+            var account = PFUser()
+            account.username = self.nameText.text
+            account.password = self.passWordText.text
+            // Check already registerd user
+            var checkExist = PFUser.query()
+            checkExist.whereKey("username", equalTo: account.username)
+            checkExist.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                if(objects.count > 0){
+                    self.hud.hide(true, afterDelay: 0.3)
+                    var alert = UIAlertController(title:"", message:"This username is already used.", preferredStyle:UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+                    }))
+                    self.presentViewController(alert, animated:true ,completion:nil)
+                    self.hud.hide(true, afterDelay: 0.3)
+                }
+                else{
+                    self.signUp(account)
+                }
             }
         }
         else{
-        var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
-        }))
-        self.presentViewController(alert, animated:true ,completion:nil)
+            var alert = UIAlertController(title:"", message:"Please fill in the blank!!", preferredStyle:UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
+            }))
+            self.presentViewController(alert, animated:true ,completion:nil)
         }
     }
+
     
     func signUp(tweeter:PFUser) {
         tweeter.signUpInBackgroundWithBlock{
             (success:Bool!, error:NSError!)->Void in
-            if error != nil{
+            if error == nil{
                 println("Sign up succeeded.")
                 self.performSegueWithIdentifier("LogIn", sender: nil)
             }else{
-            var alert = UIAlertController(title:"", message:"Wrong password!!", preferredStyle:UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title:"", message:"Error occcured!!", preferredStyle:UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
                 }))
                 self.presentViewController(alert, animated:true ,completion:nil)

@@ -20,8 +20,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-            self.performSegueWithIdentifier("LogIn", sender:nil)
-//            PFUser.logOut()
+//            self.performSegueWithIdentifier("LogIn", sender:nil)
+            PFUser.logOut()
         }
     }
     //UI
@@ -68,6 +68,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
         passWordText.placeholder = "password"
+        passWordText.secureTextEntry = true
         self.view.addSubview(passWordText)
         
         //signButton
