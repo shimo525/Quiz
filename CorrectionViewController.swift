@@ -50,10 +50,10 @@ class CorrectionViewController: UITabBarController {
         correctionText2 = UILabel()
         correctionText2.text = "\(correctAnswer)"
         correctionText2.textColor = UIColor.blackColor()
-        correctionText2.font = UIFont(name: "Verdana", size: 17)
+        correctionText2.font = UIFont(name: "Verdana", size: 20)
         correctionText2.sizeToFit()
-        correctionText2.layer.borderWidth = 0.3
-        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
+//        correctionText2.layer.borderWidth = 0.3
+//        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
         correctionText2.center = CGPointMake(originalFrame.width/2, 55)
         self.view.addSubview(correctionText2)
         
@@ -87,6 +87,7 @@ class CorrectionViewController: UITabBarController {
         //button
         goButton = UIButton(frame: CGRectMake(originalFrame.width/2 - 50, originalFrame.height/1.8, 100, 50))
         goButton.setTitle("back", forState: UIControlState.Normal)
+        goButton.titleLabel?.font = UIFont(name: "Verdana", size: 22)
         goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         goButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         goButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)

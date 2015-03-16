@@ -31,10 +31,12 @@ class TimeLineCell: UITableViewCell {
         self.numberLabel.text = num.description
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.clearColor()
+        self.layer.borderWidth = 0.12
+        self.layer.borderColor = UIColor.blackColor().CGColor
 //        self.selectionStyle = UITableViewCellSelectionStyle.
-        var cellSelectedBgView = UIView()
-        cellSelectedBgView.backgroundColor = UIColor.redColor()
-        self.selectedBackgroundView = cellSelectedBgView
+//        var cellSelectedBgView = UIView()
+//        cellSelectedBgView.backgroundColor = UIColor.redColor()
+//        self.selectedBackgroundView = cellSelectedBgView
     }
 
 }

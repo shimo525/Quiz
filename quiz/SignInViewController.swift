@@ -20,8 +20,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-//            self.performSegueWithIdentifier("LogIn", sender:nil)
-            PFUser.logOut()
+            self.performSegueWithIdentifier("LogIn", sender:nil)
+//            PFUser.logOut()
         }
     }
     //UI
@@ -88,6 +88,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         var facebookLabel = UILabel()
         facebookLabel.text = "or you can sign in with..."
         facebookLabel.textColor = UIColor.blackColor()
+        facebookLabel.font = UIFont(name: "Verdana", size: 18)
         facebookLabel.sizeToFit()
         facebookLabel.center = CGPointMake(originalFrame.width/2, 382)
         self.view.addSubview(facebookLabel)
