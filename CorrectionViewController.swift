@@ -43,7 +43,7 @@ class CorrectionViewController: UITabBarController {
         correctionText1.textColor = UIColor.blackColor()
         correctionText1.font = UIFont(name: "Verdana", size: 17)
         correctionText1.sizeToFit()
-        correctionText1.center = CGPointMake(originalFrame.width/2,30)
+        correctionText1.center = CGPointMake(originalFrame.width/2,70)
         self.view.addSubview(correctionText1)
         
         //correctionText2
@@ -54,7 +54,7 @@ class CorrectionViewController: UITabBarController {
         correctionText2.sizeToFit()
 //        correctionText2.layer.borderWidth = 0.3
 //        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
-        correctionText2.center = CGPointMake(originalFrame.width/2, 55)
+        correctionText2.center = CGPointMake(originalFrame.width/2, 95)
         self.view.addSubview(correctionText2)
         
         //messageText1
@@ -67,7 +67,7 @@ class CorrectionViewController: UITabBarController {
         }
         messageText1.font = UIFont(name: "Verdana", size: 35)
         messageText1.sizeToFit()
-        messageText1.center = CGPointMake(originalFrame.width/2, 100)
+        messageText1.center = CGPointMake(originalFrame.width/2, 200)
         messageText1.textColor = UIColor.redColor()
         self.view.addSubview(messageText1)
         
@@ -80,19 +80,18 @@ class CorrectionViewController: UITabBarController {
             messageText2.text = "You chose wrong answer!"
         }
         messageText2.sizeToFit()
-        messageText2.center = CGPointMake(originalFrame.width/2, 140)
+        messageText2.center = CGPointMake(originalFrame.width/2, 240)
         messageText2.textColor = UIColor.blackColor()
         self.view.addSubview(messageText2)
         
         //button
         goButton = UIButton(frame: CGRectMake(originalFrame.width/2 - 50, originalFrame.height/1.8, 100, 50))
+        goButton.setBackgroundImage(UIImage(named: "Button1.gif"), forState: UIControlState.Normal)
         goButton.setTitle("back", forState: UIControlState.Normal)
         goButton.titleLabel?.font = UIFont(name: "Verdana", size: 22)
-        goButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        goButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         goButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
         goButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
-        goButton.layer.borderColor = UIColor.blackColor().CGColor
-        goButton.layer.borderWidth = 0.5
         self.view.addSubview(goButton)
         
         if correct == true{
