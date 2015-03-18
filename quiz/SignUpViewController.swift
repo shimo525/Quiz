@@ -40,11 +40,10 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         //selfView
         self.view.backgroundColor = UIColor.whiteColor()
         
-        //backGroundView
-        var backGroundView = UIView(frame: CGRectMake(originalFrame.width/10, 142, (originalFrame.width/5) * 4, 207))
-        backGroundView.backgroundColor = UIColor(red: 1, green: 196/255, blue: 155/255, alpha: 0.8)
-        backGroundView.layer.cornerRadius = 15
-        self.view.addSubview(backGroundView)
+        var imageView = UIImageView(frame:CGRectMake(-80, 0, originalFrame.width + 160, originalFrame.height))
+        imageView.image = UIImage(named: "模様.gif")
+        imageView.layer.cornerRadius = 7
+        self.view.addSubview(imageView)
         
         //gestureRecognizer
         var gesture = UITapGestureRecognizer(target: self, action: "closeKeyboard")
@@ -72,10 +71,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         signButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
         signButton.setTitle("signup", forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        signButton.setTitleColor(UIColor.grayColor(), forState: UIControlState.Highlighted)
+        signButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
+        signButton.setBackgroundImage(UIImage(named: "Button2.gif"), forState: UIControlState.Normal)
         signButton.layer.cornerRadius = originalFrame.width/12
         signButton.layer.borderColor = UIColor.blackColor().CGColor
-        signButton.backgroundColor = UIColor.whiteColor()
+        signButton.layer.borderWidth = 0.4
         signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signButton)
         
