@@ -35,7 +35,13 @@ class CorrectionViewController: UITabBarController {
     
     func configure(){
         //selfView
-        self.view.backgroundColor = UIColor.whiteColor()
+//        self.view.backgroundColor = UIColor.whiteColor()
+        
+        //imageView
+        var imageView = UIImageView(frame:CGRectMake(-80, 0, originalFrame.width + 160, originalFrame.height))
+        imageView.image = UIImage(named: "模様.gif")
+        imageView.layer.cornerRadius = 7
+        self.view.addSubview(imageView)
         
         //corrctionText1
         correctionText1 = UILabel()

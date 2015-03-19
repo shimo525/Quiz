@@ -40,6 +40,12 @@ class CreateViewController: UIViewController,UITextFieldDelegate{
 //        self.view.backgroundColor = UIColor.grayColor()
 //        self.view.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.2)
         
+        //imageView
+//        var imageView = UIImageView(frame:CGRectMake(-80, 0, originalFrame.width + 160, originalFrame.height))
+//        imageView.image = UIImage(named: "模様.gif")
+//        imageView.layer.cornerRadius = 7
+//        self.view.addSubview(imageView)
+        
         //titleBar
         self.navigationItem.title = "Create"
         

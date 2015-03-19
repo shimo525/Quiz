@@ -73,19 +73,18 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         
         //signButton
         signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signButton.frame = CGRectMake((originalFrame.width/12)*5, 276, originalFrame.width/6, originalFrame.width/6)
+        signButton.frame = CGRectMake((originalFrame.width/12)*5, 285, originalFrame.width/6, originalFrame.width/6)
         signButton.setTitle("signin", forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
-        signButton.setBackgroundImage(UIImage(named: "Button2.gif"), forState: UIControlState.Normal)
-        signButton.layer.cornerRadius = originalFrame.width/12
+        signButton.backgroundColor = UIColor.clearColor()
+        signButton.setBackgroundImage(UIImage(named: "Button3.gif"), forState: UIControlState.Normal)
+        signButton.layer.cornerRadius = originalFrame.width/10
         signButton.layer.borderColor = UIColor.blackColor().CGColor
-        signButton.layer.borderWidth = 0.4
-//        signButton.backgroundColor = UIColor.whiteColor()
         signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signButton)
     
-        
+        /*
         //facebookLabel
         var facebookLabel = UILabel()
         facebookLabel.text = "or you can sign in with..."
@@ -99,7 +98,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         facebookButton = FBLoginView()
         facebookButton.frame = CGRectMake(originalFrame.width/6, 405, originalFrame.width/1.5, originalFrame.height/10.4)
         facebookButton.delegate = self
-        self.view.addSubview(facebookButton)
+        self.view.addSubview(facebookButton)*/
         
     }
     
@@ -186,14 +185,14 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    /*
     //FBLoginViewDelegate
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
         let str = user.objectForKey("Email") as String?
         println("\(str)")
 //        println("a")
     }
-    
+    */
     /*
     // MARK: - Navigation
 

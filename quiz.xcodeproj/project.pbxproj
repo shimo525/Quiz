@@ -15,12 +15,7 @@
 		C61191831A88F5E70056F4E5 /* quizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61191821A88F5E70056F4E5 /* quizTests.swift */; };
 		C61426CB1AA5CDF100F70B59 /* FirstTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */; };
 		C61426CD1AA5CE0D00F70B59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */; };
-		C616015A1AB87E21005AB323 /* Button1.gif in Resources */ = {isa = PBXBuildFile; fileRef = C61601591AB87E21005AB323 /* Button1.gif */; };
-		C616015C1AB9B322005AB323 /* Button2.gif in Resources */ = {isa = PBXBuildFile; fileRef = C616015B1AB9B322005AB323 /* Button2.gif */; };
-		C61601601AB9D080005AB323 /* 模様.gif in Resources */ = {isa = PBXBuildFile; fileRef = C616015F1AB9D080005AB323 /* 模様.gif */; };
-		C636AD771AAF0CC70083D99A /* ic_reorder_black_48dp.png in Resources */ = {isa = PBXBuildFile; fileRef = C636AD761AAF0CC70083D99A /* ic_reorder_black_48dp.png */; };
-		C636AD791AAF0DAB0083D99A /* timeline.gif in Resources */ = {isa = PBXBuildFile; fileRef = C636AD781AAF0DAB0083D99A /* timeline.gif */; };
-		C636AD831AAF11510083D99A /* mypage.gif in Resources */ = {isa = PBXBuildFile; fileRef = C636AD821AAF11510083D99A /* mypage.gif */; };
+		C61601681ABB0583005AB323 /* pictures in Resources */ = {isa = PBXBuildFile; fileRef = C61601671ABB0583005AB323 /* pictures */; };
 		C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C639253F1A88FAB00014D6DB /* CreateViewController.swift */; };
 		C6728F431A934F28008F3287 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F421A934F28008F3287 /* libz.1.2.5.dylib */; };
 		C6728F451A934F3C008F3287 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F441A934F3C008F3287 /* libsqlite3.0.dylib */; };
@@ -66,12 +61,7 @@
 		C61191821A88F5E70056F4E5 /* quizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizTests.swift; sourceTree = "<group>"; };
 		C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabBarController.swift; sourceTree = "<group>"; };
 		C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		C61601591AB87E21005AB323 /* Button1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Button1.gif; sourceTree = SOURCE_ROOT; };
-		C616015B1AB9B322005AB323 /* Button2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Button2.gif; sourceTree = SOURCE_ROOT; };
-		C616015F1AB9D080005AB323 /* 模様.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "模様.gif"; sourceTree = SOURCE_ROOT; };
-		C636AD761AAF0CC70083D99A /* ic_reorder_black_48dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_reorder_black_48dp.png; path = "../../../../../Downloads/material-design-icons-master/action/1x_ios/ic_reorder_black_48dp.png"; sourceTree = "<group>"; };
-		C636AD781AAF0DAB0083D99A /* timeline.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = timeline.gif; sourceTree = "<group>"; };
-		C636AD821AAF11510083D99A /* mypage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = mypage.gif; sourceTree = SOURCE_ROOT; };
+		C61601671ABB0583005AB323 /* pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pictures; sourceTree = SOURCE_ROOT; };
 		C639253F1A88FAB00014D6DB /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "quiz-Bridging-Header.h"; sourceTree = "<group>"; };
 		C6728F421A934F28008F3287 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -163,6 +153,7 @@
 				C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */,
 				C61191731A88F5E60056F4E5 /* Images.xcassets */,
 				C61191751A88F5E60056F4E5 /* LaunchScreen.xib */,
+				C61601671ABB0583005AB323 /* pictures */,
 				C611916A1A88F5E60056F4E5 /* Supporting Files */,
 			);
 			path = quiz;
@@ -171,12 +162,6 @@
 		C611916A1A88F5E60056F4E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C616015F1AB9D080005AB323 /* 模様.gif */,
-				C61601591AB87E21005AB323 /* Button1.gif */,
-				C616015B1AB9B322005AB323 /* Button2.gif */,
-				C636AD821AAF11510083D99A /* mypage.gif */,
-				C636AD761AAF0CC70083D99A /* ic_reorder_black_48dp.png */,
-				C636AD781AAF0DAB0083D99A /* timeline.gif */,
 				C6728F441A934F3C008F3287 /* libsqlite3.0.dylib */,
 				C6728F421A934F28008F3287 /* libz.1.2.5.dylib */,
 				C611916B1A88F5E60056F4E5 /* Info.plist */,
@@ -309,15 +294,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C61601601AB9D080005AB323 /* 模様.gif in Resources */,
 				C61191721A88F5E60056F4E5 /* Main.storyboard in Resources */,
-				C636AD791AAF0DAB0083D99A /* timeline.gif in Resources */,
+				C61601681ABB0583005AB323 /* pictures in Resources */,
 				C61191771A88F5E60056F4E5 /* LaunchScreen.xib in Resources */,
-				C616015A1AB87E21005AB323 /* Button1.gif in Resources */,
-				C636AD771AAF0CC70083D99A /* ic_reorder_black_48dp.png in Resources */,
-				C616015C1AB9B322005AB323 /* Button2.gif in Resources */,
 				C61191741A88F5E60056F4E5 /* Images.xcassets in Resources */,
-				C636AD831AAF11510083D99A /* mypage.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

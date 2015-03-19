@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="SignIn" id="yVw-XV-Md8"/>
+                    <tabBarItem key="tabBarItem" title="SignIn" image="in.gif" id="yVw-XV-Md8"/>
                     <navigationItem key="navigationItem" id="BA0-Gh-4Oj"/>
                     <connections>
                         <segue destination="sPb-sW-LuH" kind="presentation" identifier="LogIn" id="Ecq-93-Wcy"/>
@@ -283,6 +283,11 @@
                     <view key="view" contentMode="scaleToFill" id="oGK-BA-yB2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="模様.gif" translatesAutoresizingMaskIntoConstraints="NO" id="1zA-9C-A54">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.82604508494357831" green="0.85970212068172835" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="YHe-6e-NQh"/>
@@ -302,6 +307,11 @@
                     <view key="view" contentMode="scaleToFill" id="xQY-B1-H9X">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="模様.gif" translatesAutoresizingMaskIntoConstraints="NO" id="jPp-sO-YjU">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.82604508489999995" green="0.85970212069999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="eoo-Oc-1Ji"/>
@@ -330,10 +340,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="in.gif" width="30" height="30"/>
         <image name="mypage.gif" width="30" height="30"/>
         <image name="timeline.gif" width="30" height="30"/>
+        <image name="模様.gif" width="567" height="567"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dqD-Fo-pp5"/>
+        <segue reference="Ecq-93-Wcy"/>
     </inferredMetricsTieBreakers>
 </document>
