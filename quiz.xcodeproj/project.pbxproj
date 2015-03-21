@@ -15,7 +15,6 @@
 		C61191831A88F5E70056F4E5 /* quizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61191821A88F5E70056F4E5 /* quizTests.swift */; };
 		C61426CB1AA5CDF100F70B59 /* FirstTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */; };
 		C61426CD1AA5CE0D00F70B59 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */; };
-		C61601681ABB0583005AB323 /* pictures in Resources */ = {isa = PBXBuildFile; fileRef = C61601671ABB0583005AB323 /* pictures */; };
 		C63925401A88FAB00014D6DB /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C639253F1A88FAB00014D6DB /* CreateViewController.swift */; };
 		C6728F431A934F28008F3287 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F421A934F28008F3287 /* libz.1.2.5.dylib */; };
 		C6728F451A934F3C008F3287 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6728F441A934F3C008F3287 /* libsqlite3.0.dylib */; };
@@ -32,6 +31,13 @@
 		C68E9A651AA0AFB000312F47 /* CorrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */; };
 		C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB42331A961BEB0062BE9D /* MyPageController.swift */; };
 		C6BC41601A9777C8008DECB6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */; };
+		C6BEBC471ABDACD1001F4CD8 /* pictures in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC461ABDACD1001F4CD8 /* pictures */; };
+		C6BEBC491ABDADB0001F4CD8 /* 模様.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC481ABDADB0001F4CD8 /* 模様.gif */; };
+		C6BEBC4B1ABDADC9001F4CD8 /* Button3.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC4A1ABDADC9001F4CD8 /* Button3.gif */; };
+		C6BEBC4F1ABDADDA001F4CD8 /* timeline.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC4E1ABDADDA001F4CD8 /* timeline.gif */; };
+		C6BEBC511ABDADE2001F4CD8 /* mypage.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC501ABDADE2001F4CD8 /* mypage.gif */; };
+		C6BEBC531ABDADF3001F4CD8 /* in.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC521ABDADF3001F4CD8 /* in.gif */; };
+		C6BEBC551ABDADF8001F4CD8 /* Button1.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC541ABDADF8001F4CD8 /* Button1.gif */; };
 		C6C63BD61A8BA2BA0069A8B4 /* TimeLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */; };
 		C6C63C081A8E30490069A8B4 /* TimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */; };
 		C6C63C451A90D3330069A8B4 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */; };
@@ -61,7 +67,6 @@
 		C61191821A88F5E70056F4E5 /* quizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quizTests.swift; sourceTree = "<group>"; };
 		C61426CA1AA5CDF100F70B59 /* FirstTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabBarController.swift; sourceTree = "<group>"; };
 		C61426CC1AA5CE0D00F70B59 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		C61601671ABB0583005AB323 /* pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pictures; sourceTree = SOURCE_ROOT; };
 		C639253F1A88FAB00014D6DB /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "quiz-Bridging-Header.h"; sourceTree = "<group>"; };
 		C6728F421A934F28008F3287 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -79,6 +84,13 @@
 		C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CorrectionViewController.swift; path = ../CorrectionViewController.swift; sourceTree = "<group>"; };
 		C6BB42331A961BEB0062BE9D /* MyPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageController.swift; path = ../MyPageController.swift; sourceTree = "<group>"; };
 		C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C6BEBC461ABDACD1001F4CD8 /* pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pictures; sourceTree = SOURCE_ROOT; };
+		C6BEBC481ABDADB0001F4CD8 /* 模様.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "模様.gif"; path = "../pictures/模様.gif"; sourceTree = "<group>"; };
+		C6BEBC4A1ABDADC9001F4CD8 /* Button3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Button3.gif; path = ../pictures/Button3.gif; sourceTree = "<group>"; };
+		C6BEBC4E1ABDADDA001F4CD8 /* timeline.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = timeline.gif; path = ../pictures/timeline.gif; sourceTree = "<group>"; };
+		C6BEBC501ABDADE2001F4CD8 /* mypage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = mypage.gif; path = ../pictures/mypage.gif; sourceTree = "<group>"; };
+		C6BEBC521ABDADF3001F4CD8 /* in.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = in.gif; path = ../pictures/in.gif; sourceTree = "<group>"; };
+		C6BEBC541ABDADF8001F4CD8 /* Button1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Button1.gif; path = ../pictures/Button1.gif; sourceTree = "<group>"; };
 		C6C63BD51A8BA2BA0069A8B4 /* TimeLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineController.swift; sourceTree = "<group>"; };
 		C6C63C071A8E30490069A8B4 /* TimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeLineCell.swift; sourceTree = "<group>"; };
 		C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -149,11 +161,17 @@
 				C639253F1A88FAB00014D6DB /* CreateViewController.swift */,
 				C6C63C441A90D3330069A8B4 /* AnswerViewController.swift */,
 				C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */,
+				C6BEBC481ABDADB0001F4CD8 /* 模様.gif */,
+				C6BEBC4A1ABDADC9001F4CD8 /* Button3.gif */,
+				C6BEBC4E1ABDADDA001F4CD8 /* timeline.gif */,
+				C6BEBC501ABDADE2001F4CD8 /* mypage.gif */,
+				C6BEBC541ABDADF8001F4CD8 /* Button1.gif */,
+				C6BEBC521ABDADF3001F4CD8 /* in.gif */,
+				C6BEBC461ABDACD1001F4CD8 /* pictures */,
 				C61191701A88F5E60056F4E5 /* Main.storyboard */,
 				C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */,
 				C61191731A88F5E60056F4E5 /* Images.xcassets */,
 				C61191751A88F5E60056F4E5 /* LaunchScreen.xib */,
-				C61601671ABB0583005AB323 /* pictures */,
 				C611916A1A88F5E60056F4E5 /* Supporting Files */,
 			);
 			path = quiz;
@@ -294,10 +312,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6BEBC551ABDADF8001F4CD8 /* Button1.gif in Resources */,
+				C6BEBC491ABDADB0001F4CD8 /* 模様.gif in Resources */,
 				C61191721A88F5E60056F4E5 /* Main.storyboard in Resources */,
-				C61601681ABB0583005AB323 /* pictures in Resources */,
 				C61191771A88F5E60056F4E5 /* LaunchScreen.xib in Resources */,
+				C6BEBC511ABDADE2001F4CD8 /* mypage.gif in Resources */,
 				C61191741A88F5E60056F4E5 /* Images.xcassets in Resources */,
+				C6BEBC4B1ABDADC9001F4CD8 /* Button3.gif in Resources */,
+				C6BEBC471ABDACD1001F4CD8 /* pictures in Resources */,
+				C6BEBC531ABDADF3001F4CD8 /* in.gif in Resources */,
+				C6BEBC4F1ABDADDA001F4CD8 /* timeline.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

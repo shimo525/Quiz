@@ -54,6 +54,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         nameText.borderStyle = UITextBorderStyle.Bezel
         nameText.backgroundColor = UIColor.whiteColor()
         nameText.delegate = self
+        nameText.clearButtonMode = UITextFieldViewMode.Always
         nameText.placeholder = "username"
         self.view.addSubview(nameText)
         
@@ -62,6 +63,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         passWordText.borderStyle = UITextBorderStyle.Bezel
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
+        passWordText.clearButtonMode = UITextFieldViewMode.Always
         passWordText.placeholder = "password"
         passWordText.secureTextEntry = true
         self.view.addSubview(passWordText)

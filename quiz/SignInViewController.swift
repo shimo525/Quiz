@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDelegate {
+class SignInViewController: UIViewController,UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
     var nameText:UITextField!
     var passWordText:UITextField!
     var signButton:UIButton!
-    var facebookButton:FBLoginView!
+//    var facebookButton:FBLoginView!
     
     //parameter
     var originalFrame:CGRect!{
@@ -67,6 +67,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         passWordText.borderStyle = UITextBorderStyle.Bezel
         passWordText.backgroundColor = UIColor.whiteColor()
         passWordText.delegate = self
+        passWordText.clearButtonMode = UITextFieldViewMode.Always
         passWordText.placeholder = "password"
         passWordText.secureTextEntry = true
         self.view.addSubview(passWordText)
@@ -83,22 +84,6 @@ class SignInViewController: UIViewController,UITextFieldDelegate,FBLoginViewDele
         signButton.layer.borderColor = UIColor.blackColor().CGColor
         signButton.addTarget(self, action: "sign", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(signButton)
-    
-        /*
-        //facebookLabel
-        var facebookLabel = UILabel()
-        facebookLabel.text = "or you can sign in with..."
-        facebookLabel.textColor = UIColor.blackColor()
-        facebookLabel.font = UIFont(name: "Verdana", size: 18)
-        facebookLabel.sizeToFit()
-        facebookLabel.center = CGPointMake(originalFrame.width/2, 382)
-        self.view.addSubview(facebookLabel)
-        
-        //facebookButton
-        facebookButton = FBLoginView()
-        facebookButton.frame = CGRectMake(originalFrame.width/6, 405, originalFrame.width/1.5, originalFrame.height/10.4)
-        facebookButton.delegate = self
-        self.view.addSubview(facebookButton)*/
         
     }
     
