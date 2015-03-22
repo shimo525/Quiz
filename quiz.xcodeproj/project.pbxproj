@@ -31,7 +31,6 @@
 		C68E9A651AA0AFB000312F47 /* CorrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */; };
 		C6BB42341A961BEB0062BE9D /* MyPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BB42331A961BEB0062BE9D /* MyPageController.swift */; };
 		C6BC41601A9777C8008DECB6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */; };
-		C6BEBC471ABDACD1001F4CD8 /* pictures in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC461ABDACD1001F4CD8 /* pictures */; };
 		C6BEBC491ABDADB0001F4CD8 /* 模様.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC481ABDADB0001F4CD8 /* 模様.gif */; };
 		C6BEBC4B1ABDADC9001F4CD8 /* Button3.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC4A1ABDADC9001F4CD8 /* Button3.gif */; };
 		C6BEBC4F1ABDADDA001F4CD8 /* timeline.gif in Resources */ = {isa = PBXBuildFile; fileRef = C6BEBC4E1ABDADDA001F4CD8 /* timeline.gif */; };
@@ -84,7 +83,6 @@
 		C68E9A641AA0AFB000312F47 /* CorrectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CorrectionViewController.swift; path = ../CorrectionViewController.swift; sourceTree = "<group>"; };
 		C6BB42331A961BEB0062BE9D /* MyPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPageController.swift; path = ../MyPageController.swift; sourceTree = "<group>"; };
 		C6BC415F1A9777C8008DECB6 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		C6BEBC461ABDACD1001F4CD8 /* pictures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pictures; sourceTree = SOURCE_ROOT; };
 		C6BEBC481ABDADB0001F4CD8 /* 模様.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "模様.gif"; path = "../pictures/模様.gif"; sourceTree = "<group>"; };
 		C6BEBC4A1ABDADC9001F4CD8 /* Button3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = Button3.gif; path = ../pictures/Button3.gif; sourceTree = "<group>"; };
 		C6BEBC4E1ABDADDA001F4CD8 /* timeline.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = timeline.gif; path = ../pictures/timeline.gif; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				C6BEBC501ABDADE2001F4CD8 /* mypage.gif */,
 				C6BEBC541ABDADF8001F4CD8 /* Button1.gif */,
 				C6BEBC521ABDADF3001F4CD8 /* in.gif */,
-				C6BEBC461ABDACD1001F4CD8 /* pictures */,
 				C61191701A88F5E60056F4E5 /* Main.storyboard */,
 				C6728F2A1A934830008F3287 /* quiz-Bridging-Header.h */,
 				C61191731A88F5E60056F4E5 /* Images.xcassets */,
@@ -319,7 +316,6 @@
 				C6BEBC511ABDADE2001F4CD8 /* mypage.gif in Resources */,
 				C61191741A88F5E60056F4E5 /* Images.xcassets in Resources */,
 				C6BEBC4B1ABDADC9001F4CD8 /* Button3.gif in Resources */,
-				C6BEBC471ABDACD1001F4CD8 /* pictures in Resources */,
 				C6BEBC531ABDADF3001F4CD8 /* in.gif in Resources */,
 				C6BEBC4F1ABDADDA001F4CD8 /* timeline.gif in Resources */,
 			);
