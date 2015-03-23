@@ -56,11 +56,11 @@ class CorrectionViewController: UITabBarController {
         correctionText2 = UILabel()
         correctionText2.text = "\(correctAnswer)"
         correctionText2.textColor = UIColor.blackColor()
-        correctionText2.font = UIFont(name: "Verdana", size: 20)
+        correctionText2.font = UIFont(name: "Verdana", size: 25)
         correctionText2.sizeToFit()
 //        correctionText2.layer.borderWidth = 0.3
 //        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
-        correctionText2.center = CGPointMake(originalFrame.width/2, 95)
+        correctionText2.center = CGPointMake(originalFrame.width/2, 100)
         self.view.addSubview(correctionText2)
         
         //messageText1
@@ -71,9 +71,9 @@ class CorrectionViewController: UITabBarController {
         else{
             messageText1.text = "Oh No!"
         }
-        messageText1.font = UIFont(name: "Verdana", size: 35)
+        messageText1.font = UIFont(name: "Zapfino", size: 30)
         messageText1.sizeToFit()
-        messageText1.center = CGPointMake(originalFrame.width/2, 200)
+        messageText1.center = CGPointMake(originalFrame.width/2, 175)
         messageText1.textColor = UIColor.redColor()
         self.view.addSubview(messageText1)
         

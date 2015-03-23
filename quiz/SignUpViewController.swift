@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         
         //signButton
         signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        signButton.frame = CGRectMake((originalFrame.width/12)*5, 285, originalFrame.width/6, originalFrame.width/6)
+        signButton.frame = CGRectMake((originalFrame.width/12)*5, 300, originalFrame.width/6, originalFrame.width/6)
         signButton.setTitle("signup", forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
