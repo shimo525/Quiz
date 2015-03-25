@@ -58,8 +58,6 @@ class CorrectionViewController: UITabBarController {
         correctionText2.textColor = UIColor.blackColor()
         correctionText2.font = UIFont(name: "Verdana", size: 25)
         correctionText2.sizeToFit()
-//        correctionText2.layer.borderWidth = 0.3
-//        correctionText2.layer.borderColor = UIColor.blackColor().CGColor
         correctionText2.center = CGPointMake(originalFrame.width/2, 100)
         self.view.addSubview(correctionText2)
         
