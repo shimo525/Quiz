@@ -69,7 +69,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         self.view.addSubview(passWordText)
         
         //signButton
-        signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        signButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         signButton.frame = CGRectMake((originalFrame.width/12)*5, 300, originalFrame.width/6, originalFrame.width/6)
         signButton.setTitle("signup", forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -128,7 +128,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     
     func signUp(tweeter:PFUser) {
         tweeter.signUpInBackgroundWithBlock{
-            (success:Bool!, error:NSError!)->Void in
+            (success:Bool, error:NSError!)->Void in
             if error == nil{
                 println("Sign up succeeded.")
                 self.performSegueWithIdentifier("LogIn", sender: nil)

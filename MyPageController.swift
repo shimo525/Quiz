@@ -30,7 +30,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        var tabBarController = self.navigationController?.viewControllers[0] as! TabBarController
         tabBarController.title = "MyPage"
         tabBarController.refreshDelegate = self
     }
@@ -50,7 +50,9 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
         self.loadMyQuizData{ (quizes,error) -> () in
             myQuizArray = quizes
             println("loadedMyData")
-            self.hud.hide(true, afterDelay: 0.3)
+            if self.hud != nil{
+                 self.hud.hide(true, afterDelay: 0.3)
+            }
             self.myHeaderView.reloadData()
         }
     }
@@ -92,7 +94,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
             if error != nil{//エラー処理
                 println("error")
             }
-            callback(objects as [PFObject] ,error)
+            callback(objects as! [PFObject] ,error)
         }
     }
     
@@ -131,7 +133,7 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TimeLineCell
         let titleText = myQuizArray[indexPath.row].objectForKey("title") as? String
         var number:Int? = myQuizArray[indexPath.row].objectForKey("correction") as? Int
         cell.setCell(PFUser.currentUser().username, title: titleText!,num: number!)

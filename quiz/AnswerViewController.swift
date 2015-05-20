@@ -102,9 +102,10 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     //shuffleOptions
     func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C {
-        let count = countElements(list)
-        for i in 0..<(count - 1) {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
+//        let count = count(list)
+        var count1 = count(list)
+        for i in 0..<(count1 - 1) {
+            let j = Int(arc4random_uniform(UInt32(count1 - i))) + i
             swap(&list[i], &list[j])
         }
         return list
@@ -132,7 +133,7 @@ class AnswerViewController: UIViewController,UITableViewDelegate,UITableViewData
             var alert = UIAlertController(title:"", message:"Will you answer this question?", preferredStyle:UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {action in
                 answered = true
-                var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as CorrectionViewController
+                var correctionController = self.storyboard?.instantiateViewControllerWithIdentifier("correction") as! CorrectionViewController
                 if self.options[indexPath.row] == self.orderOptions[0]{
                     correctionController.correct = true
                 }

@@ -29,7 +29,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        var tabBarController = self.navigationController?.viewControllers[0] as TabBarController
+        var tabBarController = self.navigationController?.viewControllers[0] as! TabBarController
         tabBarController.title = "TimeLine"
         tabBarController.refreshDelegate = self
     }
@@ -46,11 +46,16 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     var refreshControl:UIRefreshControl!
 
     func configure(){
+        var imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        imageView.image = UIImage(named: "模様.gif")
+        self.view.addSubview(imageView)
+        
         //tableView
         headerView.delegate = self
         headerView.dataSource = self
-        headerView.backgroundColor = UIColor(red: 80/255, green: 20/255, blue: 1, alpha: 0.1)
+        headerView.backgroundColor = UIColor.clearColor()
         headerView.frame = self.view.frame
+        self.view.bringSubviewToFront(headerView)
         
         //title
         self.title = "TimeLine"
@@ -70,7 +75,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
                 println("error")
             }
             println("\(objects)")
-            callback(objects as [PFObject] ,error)
+            callback(objects as! [PFObject] ,error)
         }
     }
     
@@ -90,7 +95,9 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         self.loadQuizData{ (quizes,error) -> () in
             quizArray = quizes
             println("loadedData")
-            self.hud.hide(true, afterDelay: 0.3)
+            if self.hud != nil{
+                self.hud.hide(true, afterDelay: 0.3)
+            }
             self.headerView.reloadData()
         }
 //        refreshControl.removeFromSuperview()
@@ -122,7 +129,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
                         options.append(option!)
                     }
                 }
-                let answerController = segue.destinationViewController as AnswerViewController
+                let answerController = segue.destinationViewController as! AnswerViewController
                 answerController.texts = [titleText!,nameText!,contentText!]
                 answerController.orderOptions = options
                 answerController.index = row!
@@ -140,7 +147,7 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeLineCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)as! TimeLineCell
         var nameText:String? = quizArray[indexPath.row].objectForKey("name") as? String
         var titleText:String? = quizArray[indexPath.row].objectForKey("title") as? String
         var number:Int? = quizArray[indexPath.row].objectForKey("correction") as? Int

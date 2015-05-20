@@ -20,8 +20,8 @@ class SignInViewController: UIViewController,UITextFieldDelegate{
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         if PFUser.currentUser() != nil{
-//            self.performSegueWithIdentifier("LogIn", sender:nil)
-            PFUser.logOut()
+            self.performSegueWithIdentifier("LogIn", sender:nil)
+//            PFUser.logOut()
         }
     }
     //UI
@@ -73,7 +73,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate{
         self.view.addSubview(passWordText)
         
         //signButton
-        signButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        signButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         signButton.frame = CGRectMake((originalFrame.width/12)*5, 300, originalFrame.width/6, originalFrame.width/6)
         signButton.setTitle("signin", forState: UIControlState.Normal)
         signButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -131,7 +131,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate{
     
     
     func signIn(username:NSString, password:NSString) {
-        PFUser.logInWithUsernameInBackground(username, password: password) {
+        PFUser.logInWithUsernameInBackground(username as String, password: password as String) {
             (user: PFUser!, error: NSError!) -> Void in
             if user != nil {
                 self.performSegueWithIdentifier("LogIn", sender: nil)
