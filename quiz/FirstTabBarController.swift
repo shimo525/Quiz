@@ -16,7 +16,7 @@ class FirstTabBarController: UITabBarController {
         var naviHeight = self.navigationController?.navigationBar.frame.height
         var naviY = self.navigationController?.navigationBar.frame.minY
         self.tabBar.frame = CGRectMake(0, naviHeight! + naviY!, windowSize.width, tabHeight)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 135/255, green: 148/255, blue: 1, alpha: 0.5)
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         println("\(self.navigationController?.navigationBar.frame)")
         println("\(self.tabBar.frame)")
     }

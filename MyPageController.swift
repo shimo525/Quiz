@@ -73,11 +73,15 @@ class MyPageController: UIViewController,RefreshButton,UITableViewDelegate,UITab
     var refreshControl:UIRefreshControl!
     
     func configure(){
+        var imageView = UIImageView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        imageView.image = UIImage(named: "模様.gif")
+        self.view.addSubview(imageView)
+        
+        //tableView
         myHeaderView.delegate = self
         myHeaderView.dataSource = self
-        myHeaderView.frame = self.view.frame
-//        myHeaderView.backgroundColor = UIColor(red: 1, green: 90/255, blue: 175/255, alpha: 0.2)
-        myHeaderView.backgroundColor = UIColor(red: 80/255, green: 20/255, blue: 1, alpha: 0.1)
+        myHeaderView.backgroundColor = UIColor.clearColor()
+        self.view.bringSubviewToFront(myHeaderView)
         
         //refreshControl
         refreshControl = UIRefreshControl()

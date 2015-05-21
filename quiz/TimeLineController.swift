@@ -54,7 +54,6 @@ class TimeLineController: UIViewController,RefreshButton,UITableViewDataSource,U
         headerView.delegate = self
         headerView.dataSource = self
         headerView.backgroundColor = UIColor.clearColor()
-        headerView.frame = self.view.frame
         self.view.bringSubviewToFront(headerView)
         
         //title

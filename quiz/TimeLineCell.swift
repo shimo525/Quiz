@@ -29,7 +29,7 @@ class TimeLineCell: UITableViewCell {
         self.nameLabel.text = name
         self.titleLabel.text = title
         self.numberLabel.text = num.description
-        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.selectionStyle = UITableViewCellSelectionStyle.Default
         self.backgroundColor = UIColor.clearColor()
         self.layer.borderWidth = 0.12
         self.layer.borderColor = UIColor.blackColor().CGColor
